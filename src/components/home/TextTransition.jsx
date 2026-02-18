@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 const ScrollRevealText = ({ text, className = "" }) => {
   const containerRef = useRef(null);
@@ -79,22 +80,20 @@ const ScrollRevealText = ({ text, className = "" }) => {
 
 const TextTransition = () => {
   return (
-    <div className="flex flex-col items-start justify-between gap-8 md:gap-12 container mx-auto px-6 py-16 md:py-24 lg:py-32">
+    <div className="flex flex-col items-start justify-between gap-8 md:gap-12 container mx-auto px-6 md:px-0 py-16 md:py-24 lg:py-32">
       <div className="w-full">
         <ScrollRevealText
-          // RESPONSIVE TEXT CLASSES:
-          // Mobile: text-3xl, leading-tight
-          // Tablet: text-4xl
-          // Desktop: text-[60px], leading-tight
-          className="text-3xl md:text-5xl lg:text-[60px] leading-tight md:leading-snug lg:leading-[1.1] font-light transition-colors duration-300"
-          text={`Wir verbinden Architektur und\nProjektmanagement zu \nnachhaltigen Lösungen für\n Bauherren, Investoren und Nutzer.`}
+          className="text-xl md:text-2xl lg:text-[49px] leading-tight md:leading-snug lg:leading-[1.1] font-light transition-colors duration-300"
+          text={`Wir verbinden Architektur und \nProjektmanagement zu nachhaltigen\n Lösungen für Bauherren, Investoren\n und Nutzer.`}
         />
       </div>
 
       <div>
-        <button className="text-[#333333] border border-[#333333] px-6 py-2 md:px-8 md:py-3 text-sm md:text-base font-light tracking-wide uppercase hover:bg-[#333333] hover:text-white transition-colors duration-300">
-          Unternehmen
-        </button>
+        <Link href="/unternehmen">
+          <button className="text-[#333333] border border-[#333333] px-6 py-2 md:px-8 md:py-3 text-sm md:text-base font-light tracking-wide uppercase hover:bg-[#333333] hover:text-white transition-colors duration-300">
+            Unternehmen
+          </button>
+        </Link>
       </div>
     </div>
   );

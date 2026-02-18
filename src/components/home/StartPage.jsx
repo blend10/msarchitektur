@@ -12,7 +12,7 @@ const StartPage = () => {
       {/* Default Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <Image
-          src="/images/startPhoto.jpg"
+          src="/images/startPhoto1.png"
           alt="Start Page Background"
           fill
           className="object-cover"
@@ -30,7 +30,7 @@ const StartPage = () => {
         ].join(" ")}
       >
         <Image
-          src="/images/startPage.jpg"
+          src="/images/startPage1.jpg"
           alt="Projekt Hover Background"
           fill
           className="object-cover"
@@ -41,27 +41,27 @@ const StartPage = () => {
 
       {/* Content Overlay */}
       <div className="absolute inset-0 flex items-center justify-center z-[2]">
-        <div className="container px-6 mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0 text-center md:text-left">
+        <div className="container px-6 md:px-0 mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0 text-center md:text-left">
           <div>
-            <h1 className="text-white text-sm font-light uppercase tracking-tight">
+            <h1 className="text-white text-[16px] font-light uppercase tracking-tight">
               UNTERENGSTRINGEN
             </h1>
           </div>
 
           <div>
-            <h1 className="text-white text-sm font-light uppercase tracking-tight">
+            <h1 className="text-white text-[16px] font-light uppercase tracking-tight">
               CASA FIVE
             </h1>
           </div>
 
           <div>
-            <h1 className="text-white text-sm font-light uppercase tracking-tight">
+            <h1 className="text-white text-[16px] font-light uppercase tracking-tight">
               2026
             </h1>
           </div>
 
           <Link
-            href="/projekte"
+            href="/projekte/casa-five"
             className="pt-4 md:pt-0 cursor-pointer"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}

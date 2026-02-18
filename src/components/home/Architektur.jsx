@@ -3,9 +3,9 @@ import Image from "next/image";
 
 const Architektur = () => {
   return (
-    <div className="container mx-auto px-6 py-12 md:py-20">
+    <div className="container mx-auto py-12 md:py-20">
       {/* Heading */}
-      <h1 className="text-[#0D0D0D] text-3xl md:text-[50px] leading-tight md:leading-snug text-center mb-12 md:mb-20 font-light">
+      <h1 className="text-[#0D0D0D] text-3xl md:text-[47px] leading-tight md:leading-snug text-center mb-12 md:mb-20 font-light">
         Architektur entfaltet ihre Wirkung <br className="hidden md:block" />
         nicht durch Lautstärke, sondern <br className="hidden md:block" />
         durch Substanz.

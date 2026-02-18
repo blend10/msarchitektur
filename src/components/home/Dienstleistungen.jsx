@@ -86,7 +86,7 @@ const ServiceItem = ({ number, title, text }) => (
 const Dienstleistungen = () => {
   return (
     <div className="bg-[#000000] py-20 md:py-40">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 md:px-0">
         <h1 className="text-[18px] md:text-[24px] text-white font-light tracking-tight mb-12 md:mb-20 uppercase opacity-60">
           Dienstleistungen
         </h1>

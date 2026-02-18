@@ -58,9 +58,10 @@ export default function PlansSlider({ plans }) {
                   <button
                     key={plan.id}
                     onClick={() => setCurrentIndex(index)}
-                    className={`relative px-8 py-6 text-sm font-medium transition-colors duration-300 whitespace-nowrap ${isActive ? "text-gray-900" : "text-gray-400 hover:text-gray-600"}`}
+                    className={`relative px-8 py-6 text-sm font-medium transition-colors duration-300  whitespace-nowrap ${isActive ? "text-gray-900" : "text-gray-400 hover:text-gray-600"}`}
                   >
                     {plan.label}
+                    <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gray-300 " />
                     {isActive && (
                       <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gray-900" />
                     )}

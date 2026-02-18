@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const navMain = [
-  { label: "Startseite", href: "/" },
-  { label: "Studio", href: "/studio" },
+  // { label: "Startseite", href: "/" },
+  { label: "Unternehmen", href: "/unternehmen" },
   { label: "Projekte", href: "/projekte" },
   { label: "Service", href: "/service" },
   { label: "Methodik", href: "/methodik" },

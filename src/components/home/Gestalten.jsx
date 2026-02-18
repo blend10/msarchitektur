@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Gestalten = ({ src }) => {
   return (
@@ -19,9 +20,12 @@ const Gestalten = ({ src }) => {
             <h1 className="text-[28px] md:text-[36px] text-white font-light leading-9 md:leading-10 tracking-tight">
               Gestalten Sie Ihr <br /> Leben.
             </h1>
-            <button className="bg-white text-black px-5 py-3 font-light text-sm md:text-base">
-              Kontakt
-            </button>
+            <Link href="/kontakt">
+              {" "}
+              <button className="bg-white hover:bg-black hover:text-white text-black px-5 py-3 font-light text-sm md:text-base">
+                Kontakt
+              </button>
+            </Link>
           </div>
         </div>
       </div>

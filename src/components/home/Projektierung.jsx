@@ -43,7 +43,7 @@ const Projektierung = () => {
   };
 
   return (
-    <div className="container mx-auto px-6 py-12 md:py-20">
+    <div className="container mx-auto px-6 md:px-0 py-12 md:py-20">
       <div className="flex flex-col items-start justify-between gap-8 md:gap-10">
         {/* Image Carousel Wrapper */}
         <div className="relative w-full h-[300px] md:h-[510px] bg-gray-100 overflow-hidden rounded-sm group">

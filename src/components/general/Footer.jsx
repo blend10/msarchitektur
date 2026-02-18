@@ -1,19 +1,23 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
     <div className="bg-black py-12 md:py-20 relative ">
       <div className="container mx-auto px-6 flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-0 mb-16 lg:mb-20">
         {/* Logo Section */}
+
         <div className="w-full lg:w-1/2 flex justify-start">
-          <Image
-            src="/images/logo.svg"
-            alt="logoFooter"
-            width={237}
-            height={24}
-            className="w-[180px] md:w-[237px] h-auto" // Responsive logo size
-          />
+          <Link href="/">
+            <Image
+              src="/images/logo.svg"
+              alt="logoFooter"
+              width={237}
+              height={24}
+              className="w-[180px] md:w-[237px] h-auto" // Responsive logo size
+            />
+          </Link>
         </div>
 
         {/* Links Section */}
@@ -24,18 +28,31 @@ const Footer = () => {
               Projekte
             </h1>
             <div className="flex flex-col gap-2 font-thin text-white/80 text-sm md:text-base">
-              <p className="hover:text-white transition-colors cursor-pointer">
-                Sternen
-              </p>
-              <p className="hover:text-white transition-colors cursor-pointer">
-                Garten
-              </p>
-              <p className="hover:text-white transition-colors cursor-pointer">
-                Kern
-              </p>
-              <p className="hover:text-white transition-colors cursor-pointer">
-                Reuss
-              </p>
+              <Link href="/projekte/sternen">
+                {" "}
+                <p className="hover:text-white transition-colors cursor-pointer">
+                  Sternen
+                </p>
+              </Link>
+
+              <Link href="/projekte/vista">
+                {" "}
+                <p className="hover:text-white transition-colors cursor-pointer">
+                  Vista
+                </p>
+              </Link>
+              <Link href="/projekte/pura">
+                {" "}
+                <p className="hover:text-white transition-colors cursor-pointer">
+                  Pura
+                </p>
+              </Link>
+              <Link href="/projekte/rundi">
+                {" "}
+                <p className="hover:text-white transition-colors cursor-pointer">
+                  Rundi
+                </p>
+              </Link>
             </div>
           </div>
 
@@ -45,9 +62,17 @@ const Footer = () => {
               Adresse
             </h1>
             <div className="flex flex-col gap-2 font-thin text-white/80 text-sm md:text-base">
-              <p>MS Architektur AG</p>
-              <p>Neuenhoferstrasse 99</p>
-              <p>5400 Baden - CH</p>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=MS+Architektur+AG+Neuenhoferstrasse+99+5400+Baden"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+                aria-label="Adresse auf Google Maps anzeigen"
+              >
+                <p>MS Architektur AG</p>
+                <p>Neuenhoferstrasse 99</p>
+                <p>5400 Baden - CH</p>
+              </a>
             </div>
           </div>
 
@@ -57,8 +82,18 @@ const Footer = () => {
               Kontakt
             </h1>
             <div className="flex flex-col gap-2 font-thin text-white/80 text-sm md:text-base">
-              <p>+41 56 560 01 16</p>
-              <p>info@ms-architektur.ch</p>
+              <a
+                href="tel:+41565600116"
+                className="hover:text-white transition-colors"
+              >
+                +41 56 560 01 16
+              </a>
+              <a
+                href="mailto:info@ms-architektur.ch"
+                className="hover:text-white transition-colors"
+              >
+                info@ms-architektur.ch
+              </a>
             </div>
           </div>
         </div>

@@ -1,15 +1,23 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link"; // Import Link
 
 // Reusable component to avoid code repetition
-const ProjectItem = ({ number, title, year, imageSrc, className = "" }) => (
-  <div className={className}>
-    <div className="relative w-full h-[300px] md:h-[500px]">
+const ProjectItem = ({
+  number,
+  title,
+  year,
+  imageSrc,
+  className = "",
+  href,
+}) => (
+  <Link href={href} className={`block group ${className}`}>
+    <div className="relative w-full h-[300px] md:h-[500px] overflow-hidden">
       <Image
         src={imageSrc}
         alt={title}
         fill
-        className="object-cover"
+        className="object-cover transition-transform duration-700 group-hover:scale-105"
         sizes="(max-width: 768px) 100vw, 60vw"
       />
     </div>
@@ -21,12 +29,12 @@ const ProjectItem = ({ number, title, year, imageSrc, className = "" }) => (
       </div>
       <span className="text-[#0D0D0D] text-sm md:text-base">{year}</span>
     </div>
-  </div>
+  </Link>
 );
 
 const Akzente = () => {
   return (
-    <div className="container mx-auto px-6 py-12 md:py-20">
+    <div className="container mx-auto px-6 md:px-0 py-12 md:py-20">
       <h1 className="text-[#0D0D0D] font-light text-[32px] md:text-[36px] mb-8 md:mb-12">
         Akzente
       </h1>
@@ -38,12 +46,14 @@ const Akzente = () => {
           title="Casa Five"
           year="2026"
           imageSrc="/images/project1.jpg"
+          href="/projekte/casa-five"
         />
         <ProjectItem
           number="02"
-          title="Casa Five"
+          title="Pura"
           year="2026"
           imageSrc="/images/project2.png"
+          href="/projekte/pura"
         />
       </div>
 
@@ -51,16 +61,26 @@ const Akzente = () => {
       <div className="grid grid-cols-1 md:grid-cols-[40%_60%] gap-12 md:gap-8">
         <ProjectItem
           number="03"
-          title="Casa Five"
+          title="Halden"
           year="2026"
-          imageSrc="/images/project1.jpg"
+          imageSrc="/images/halden.png"
+          href="/projekte/halden"
         />
         <ProjectItem
           number="04"
-          title="Casa Five"
+          title="Vista"
           year="2026"
-          imageSrc="/images/project2.png"
+          imageSrc="/images/vista.png"
+          href="/projekte/vista"
         />
+      </div>
+
+      <div className="flex items-center justify-center mt-20">
+        <Link href="/projekte">
+          <button className="text-[#333333] border border-[#333333] px-6 py-2 md:px-8 md:py-3 text-sm md:text-base font-light tracking-wide uppercase hover:bg-[#333333] hover:text-white transition-colors duration-300">
+            ALLE PROJEKTE ANZEIGEN  
+          </button>
+        </Link>
       </div>
     </div>
   );
