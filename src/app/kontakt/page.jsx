@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Page = () => {
   return (
-    <div className="w-full bg-white">
+    <div className="w-full bg-black">
       {/* --- HERO IMAGE SECTION --- */}
       <div className="relative w-full h-[840px]">
         <Image

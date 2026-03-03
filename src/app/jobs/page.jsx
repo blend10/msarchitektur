@@ -38,7 +38,7 @@ const Page = () => {
   return (
     <div>
       {/* Hero Section */}
-      <div className="relative w-full h-[840px]">
+      <div className="relative w-full h-[840px] bg-black">
         <Image
           src="/images/kontaktPhoto.jpg"
           alt="Contact Hero"
