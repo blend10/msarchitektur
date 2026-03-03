@@ -45,7 +45,7 @@ const Akzente = () => {
           number="01"
           title="Casa Five"
           year="2026"
-          imageSrc="/images/project1.jpg"
+          imageSrc="/images/startPhoto1.png"
           href="/projekte/casa-five"
         />
         <ProjectItem
@@ -78,7 +78,7 @@ const Akzente = () => {
       <div className="flex items-center justify-center mt-20">
         <Link href="/projekte">
           <button className="text-[#333333] border border-[#333333] px-6 py-2 md:px-8 md:py-3 text-sm md:text-base font-light tracking-wide uppercase hover:bg-[#333333] hover:text-white transition-colors duration-300">
-            ALLE PROJEKTE ANZEIGEN  
+            ALLE PROJEKTE ANZEIGEN
           </button>
         </Link>
       </div>
