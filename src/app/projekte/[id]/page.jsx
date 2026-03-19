@@ -7,9 +7,9 @@ const projects = [
     id: "casa-five",
     title: "Casa Five",
     image: {
-      src: "/images/videoProject.mp4",
+      src: "/images/gallery1.jpg",
       alt: "Facade Detail",
-      type: "video",
+      type: "image",
     },
     paragraph:
       "An der Talacherstrasse in Unterengstringen entsteht ein Ensemble aus fünf freistehenden Villen, die sich entlang der bestehenden Topografie staffeln. Die Setzung der Baukörper folgt dem Hang und bildet eine klare Struktur, welche die Höhenlinien aufnimmt und den Gebäuden eine präzise Einordnung im Gelände gibt. Zwischen den Häusern entstehen Aussenräume, die sich natürlich aus der Geländebewegung ergeben. Jede Villa entwickelt sich über mehrere Ebenen, die dem Terrain angepasst sind. ",
@@ -18,7 +18,7 @@ const projects = [
       "Die Wohn- und Aufenthaltsräume öffnen sich hangseitig zu den Aussenflächen und erhalten viel Tageslicht. Klare Grundrisse organisieren im Erdgeschoss Wohnen, Essen und Kochen mit direkten Übergängen nach aussen, während die oberen Geschosse die privaten Räume und zusätzliche Terrassen aufnehmen. Begrünte und nutzbare Dachflächen gliedern die Baukörper vertikal.",
     paragraph3:
       "Die fünf Häuser sind eigenständige Adressen und formen dennoch ein zusammenhängendes Gesamtbild. Die Fassaden zeigen eine ruhige, zurückhaltende Gestaltung mit klaren Öffnungen und einer einheitlichen Materialität. Die Höhenentwicklung bleibt innerhalb der vorgegebenen Masse und unterstützt den ruhigen Ausdruck der Bebauung. Die Einstellhalle ist im unteren Geländeteil integriert und verbindet die Gebäude unterirdisch. Dadurch entsteht ein verkehrsberuhigtes Wohnumfeld, in dem die Aussenräume frei nutzbar bleiben. CASA FIVE steht für eine präzise gesetzte, topografisch abgestimmte Wohnarchitektur. Das Projekt verbindet kompakte Baukörper, einfache Linien und eine selbstverständliche Beziehung zwischen Gebäude und Landschaft.",
-    rightImage: "/images/home11.jpg",
+    rightImage: "/images/gallery9.jpg",
     adresse: "Talacherstrasse",
     plz: "8103",
     ort: "Unterengstringen",
@@ -47,15 +47,12 @@ const projects = [
     gallery: [
       { src: "/images/gallery1.jpg", alt: "Exterior Garden" },
       { src: "/images/gallery2.jpg", alt: "Pool View" },
-      { src: "/images/gallery3.mp4", alt: "Facade Detail", type: "video" },
+      { src: "/images/gallery6.jpg", alt: "Facade Detail" },
       { src: "/images/gallery4.jpg", alt: "Bathroom" },
       { src: "/images/gallery5.jpg", alt: "Bedroom" },
-      { src: "/images/gallery6.jpg", alt: "Living Room" },
-      { src: "/images/gallery7.jpg", alt: "Kitchen" },
-      { src: "/images/gallery8.mp4", alt: "Terrace", type: "video" },
-      { src: "/images/gallery9.jpg", alt: "Hallway" },
-      { src: "/images/gallery10.jpg", alt: "Entrance" },
-      { src: "/images/gallery11.jpg", alt: "Entrance" },
+      { src: "/images/gallery66.jpg", alt: "Living Room" },
+      { src: "/images/gallery9.jpg", alt: "Kitchen" },
+      { src: "/images/gallery10.jpg", alt: "Terrace" },
       { src: "/images/gallery12.png", alt: "Entrance" },
       { src: "/images/gallery13.png", alt: "Entrance" },
       { src: "/images/gallery14.png", alt: "Entrance" },
@@ -108,7 +105,7 @@ const projects = [
     id: "freva",
     title: "Freva",
     image: {
-      src: "/images/freva.png",
+      src: "/images/frevaImg.png",
       alt: "Facade Detail",
       type: "image",
     },
@@ -161,24 +158,27 @@ const projects = [
       alt: "Facade Detail",
     },
     title2: "Nutzerorientierte, wertschaffende Projekte",
-    rightImage: "/images/perl1.jpg",
-    adresse: "Haldenstrasse",
-    plz: "5512",
-    ort: "Wohlenschwil",
-    baujahr: "2026",
-    bauherrschaft: "Immohub AG",
+    rightImage: "/images/perl3.png",
+    adresse: "Zurzacherstrasse 264",
+    plz: "5200",
+    ort: "Brugg AG",
+    baujahr: "2027",
+    bauherrschaft: "Privat",
 
     gallery: [
       { src: "/images/perl2.jpg", alt: "Exterior Garden" },
       { src: "/images/perl1.jpg", alt: "Pool View" },
       { src: "/images/perl1.jpg", alt: "Pool View" },
+      { src: "/images/perl4.png", alt: "Pool View" },
+      { src: "/images/perl5.png", alt: "Pool View" },
+      { src: "/images/perl6.png", alt: "Pool View" },
     ],
   },
   {
     id: "riet",
     title: "riet",
     image: {
-      src: "/images/riet.png",
+      src: "/images/Riet1.png",
       alt: "Facade Detail",
     },
     paragraph:
@@ -188,14 +188,20 @@ const projects = [
       "Der Entwurf sieht eine präzise Abstimmung zwischen Abbruch- und Neubauanteilen vor. Die bestehenden Räume werden in ihrer Organisation überarbeitet, während neue Wohn-, Schlaf- und Nebenräume ergänzt werden. Im Erd- und Obergeschoss entstehen offene, gut belichtete Wohnbereiche, während das Dachgeschoss für neue Zimmerprogramme optimiert wird. Die räumliche Neuordnung schafft klarere Abläufe und stärkt die Beziehung zwischen den Geschossen. Im Untergeschoss werden Fitness-, Wellness- und Funktionsräume neu strukturiert. Diese Erweiterung nutzt das vorhandene Terrain und führt zu einer eigenständigen Aufenthaltsqualität im tieferliegenden Bereich. Ergänzend wird der Aussenraum mit Pool, Sitzplatz und einem neuen Zugang ausgestaltet. Die Planung berücksichtigt die topografischen Gegebenheiten und stärkt den Bezug zwischen Haus und Garten.",
     paragraph3:
       "Die architektonische Haltung ist geprägt von einer ruhigen, klaren Formensprache. Bestehende Elemente werden integriert und präzise weitergeführt, während neue Bauteile eine zurückhaltende, moderne Ergänzung bilden. Ziel ist ein harmonischer Übergang zwischen Bestand und Erweiterungen, ohne die ursprüngliche Struktur zu überlagern. Die technische und energetische Erneuerung spielt eine zentrale Rolle. Die Planung umfasst die Modernisierung der Haustechnik, die Optimierung der Gebäudehülle und die Prüfung von Fördermassnahmen. Gleichzeitig schafft die Überarbeitung der Grundrisse eine verbesserte Nutzbarkeit und eine deutlich erhöhte räumliche Qualität. RIET steht für die Transformation eines Einfamilienhauses, das durch gezielte Eingriffe räumlich, funktional und gestalterisch erneuert wird. Das Projekt verbindet bestehende Strukturen mit moderner Architektur und schafft ein Wohnhaus, das heutigen Anforderungen und zukünftigen Bedürfnissen entspricht.",
-    rightImage: "/images/riet.png",
+    rightImage: "/images/Riet2.png",
     adresse: "Rietstrasse",
     plz: "8103",
     ort: "Unterengstringen",
     baujahr: "2026",
     bauherrschaft: "Familie Yakin",
 
-    // gallery: [{ src: "/images/riet.png", alt: "Exterior Garden" }],
+    plans: [
+      {
+        id: 0,
+        src: "/images/riet.png",
+        alt: "First Floor",
+      },
+    ],
   },
   {
     id: "rundi",
@@ -210,7 +216,7 @@ const projects = [
     adresse: "Bergstrasse 27",
     plz: "8707",
     ort: "Uetikon am See",
-    baujahr: "2026",
+    baujahr: "2025",
     bauherrschaft: "Familie Mauchle",
 
     gallery: [
@@ -266,7 +272,7 @@ const projects = [
     id: "vista",
     title: "vista",
     image: {
-      src: "/images/vista.png",
+      src: "/images/Vista11.png",
       alt: "Facade Detail",
       type: "image",
     },
@@ -277,33 +283,19 @@ const projects = [
       "Der Anbau schafft zusätzliche Fläche im östlichen Gebäudeteil und nimmt Funktionen auf, die den heutigen Wohnansprüchen besser entsprechen. Im Erdgeschoss entsteht ein offener Wohn- und Essbereich mit grosszügigen Fensteröffnungen, die sich zu mehreren Terrassen orientieren. Die Pläne zeigen eine Abfolge von gedeckten und offenen Aussenräumen, die den Innenraum erweitern und unterschiedliche Aufenthaltsqualitäten ermöglichen. Das neue Attikageschoss wird als eigenständiges Element auf den bestehenden Baukörper gesetzt. Es bildet einen ruhigen Abschluss und schafft zusätzliche Wohnfläche mit direktem Bezug grosszügiger Dachterrassen. Diese horizontale Schichtung des Gebäudes wird sowohl in den Grundrissen als auch in den Visualisierungen deutlich sichtbar. Die klare Staffelung lässt das Gebäude trotz der zusätzlichen Volumen leicht wirken.",
     paragraph3:
       "Die untere Ebene bleibt funktional und zurückhaltend. Hier befinden sich Technik, Nebenräume sowie ein grosser Lounge- und Aufenthaltsbereich mit direktem Bezug zum terrassierten Aussenraum. Die Grundrisse zeigen eine logische Organisation mit kurzen Wegen und klarer Trennung der Nutzungszonen. Die Fassaden öffnen sich grossflächig zum Hang, während sie seitlich und hangaufwärts ruhiger und geschlossener bleiben. Die grossen Terrassenflächen prägen den Ausdruck des Gebäudes und unterstreichen die starke Beziehung zur Landschaft. Das 3D-Modell zeigt deutlich, wie die Baukörpergliederung und die präzise Ausbildung der Terrassen das Projekt charakterisieren. VISTA steht für eine Weiterentwicklung eines bestehenden Wohnhauses, die funktionale Erweiterung, räumliche Grosszügigkeit und eine klare architektonische Haltung verbindet. Der Umbau respektiert die vorhandene Struktur und führt sie in eine moderne, offene Formensprache über.",
-    rightImage: "/images/vista1.png",
+    rightImage: "/images/Vista22.png",
     adresse: "Haldenstrasse 33",
     plz: "8957",
     ort: "Spreitenbach",
     baujahr: "2026",
     bauherrschaft: "Familie Oberholzer",
-    plans: [
-      {
-        id: 0,
-        src: "/images/vista1.png",
-        alt: "First Floor",
-      },
-      {
-        id: 1,
-        src: "/images/vista.png",
-        alt: "Second Floor",
-      },
-      {
-        id: 2,
-        src: "/images/vista2.png",
-        alt: "Upper Floor",
-      },
-      {
-        id: 3,
-        src: "/images/vista3.png",
-        alt: "Upper Floor",
-      },
+    gallery: [
+      { src: "/images/Vista3.png", alt: "Exterior Garden" },
+      { src: "/images/Vista4.png", alt: "Exterior Garden" },
+      { src: "/images/vista.png", alt: "Exterior Garden" },
+      { src: "/images/Vista5.png", alt: "Exterior Garden" },
+      { src: "/images/Vista6.png", alt: "Exterior Garden" },
+      { src: "/images/Vista7.png", alt: "Exterior Garden" },
     ],
   },
   {
@@ -323,20 +315,124 @@ const projects = [
     ort: "Oberengstringen",
     baujahr: "2026",
     bauherrschaft: "Yakin Arena",
-    plans: [
-      {
-        id: 0,
-        src: "/images/yakin3.png",
-        alt: "First Floor",
-      },
-      {
-        id: 1,
-        src: "/images/yakin1.jpg",
-        alt: "Second Floor",
-      },
+  },
+
+  {
+    id: "panorama",
+    title: "panorama",
+    paragraph:
+      "Die terrassierte Wohnanlage nutzt die Hanglage gezielt aus und entwickelt ein Gebäude, das sich stufenweise in die Topografie einfügt. Grosszügige Terrassen und klare Grundrisse schaffen hochwertige Aussenräume und eine hohe Wohnqualität. Die Architektur verbindet Struktur, Landschaft und Nutzung zu einem präzise organisierten Gesamtbild.",
+    title2: "Terrassierte Architektur mit hoher Wohnqualität",
+    rightImage: "/images/panorama1.png",
+    paragraph2:
+      "Das Projekt PANORAMA umfasst den Neubau einer Terrassensiedlung mit neun hochwertigen Wohnungen an der Röschenzstrasse in Laufen. Die Planung nutzt die topografischen Gegebenheiten des Grundstücks gezielt aus und entwickelt ein Gebäude, das sich stufenweise in den Hang einfügt. Durch die gestaffelte Bauweise entstehen grosszügige Terrassen und private Aussenräume mit freiem Ausblick über die Umgebung. Die Wohnanlage ist klar strukturiert und organisiert sich über mehrere Ebenen. Jede Wohnung verfügt über grosszügige Wohn- und Essbereiche mit direktem Bezug zu den vorgelagerten Terrassenflächen. Die Grundrisse sind so gestaltet, dass eine hohe Aufenthaltsqualität, gute Belichtung und klare räumliche Abläufe entstehen. Durch die terrassierte Anordnung erhalten alle Wohnungen eine eigenständige Identität sowie eine starke Verbindung zum Aussenraum.",
+    paragraph3:
+      "Im Untergeschoss befindet sich eine offene Autounterstellhalle mit den zugehörigen Nebenräumen und privaten Kellern für die einzelnen Wohnungen. Die Erschliessung der Wohnbereiche erfolgt zentral über vertikale Verbindungen und ermöglicht eine effiziente Organisation der Geschosse. Ergänzend entstehen gemeinschaftliche Aussenbereiche und Grünflächen, die das Gebäude in die bestehende Umgebung einbinden. Die architektonische Gestaltung folgt einer klaren, modernen Formensprache. Horizontale Linien und grosszügige Terrassen prägen das Erscheinungsbild des Gebäudes und unterstreichen die terrassierte Struktur. Die Baukörperentwicklung reagiert sensibel auf das Gelände und schafft eine harmonische Verbindung zwischen Architektur, Landschaft und Wohnqualität. PANORAMA steht für eine zeitgemässe Wohnanlage, die die Qualitäten des Standorts konsequent nutzt. Durch die Kombination aus Terrassenarchitektur, grosszügigen Aussenräumen und klar strukturierten Grundrissen entsteht ein Wohnprojekt mit hoher räumlicher Qualität und starkem Bezug zur Landschaft.",
+    image: {
+      src: "/images/panorama1.png",
+      alt: "Facade Detail",
+      type: "image",
+    },
+    adresse: "Röschenzstrasse",
+    plz: "4242",
+    ort: " Laufen",
+    baujahr: " 2024",
+    bauherrschaft: "Privat",
+    gallery: [
+      { src: "/images/panorama2.jpg", alt: "Exterior Garden" },
+      { src: "/images/panorama3.jpg", alt: "Exterior Garden" },
+      { src: "/images/panorama4.jpg", alt: "Exterior Garden" },
+      { src: "/images/panorama5.jpg", alt: "Exterior Garden" },
+      { src: "/images/panorama6.jpg", alt: "Exterior Garden" },
+      { src: "/images/panorama7.jpg", alt: "Exterior Garden" },
+      { src: "/images/panorama8.jpg", alt: "Exterior Garden" },
+      { src: "/images/panorama9.jpg", alt: "Exterior Garden" },
+    ],
+  },
+
+  {
+    id: "unterfeld",
+    title: "UNTERFELD",
+    paragraph:
+      "Die Wohnbebauung ordnet fünf Einfamilienhäuser in einer klar strukturierten Anlage und schafft eine ruhige Einheit im Quartier. Durchdachte Grundrisse, private Aussenräume und eine klare Organisation erzeugen hochwertige Wohnqualität und ein stimmiges Gesamtbild.",
+    title2: "Klar strukturierte Wohnhäuser",
+    rightImage: "/images/startPage.jpg",
+    paragraph2:
+      "Das Projekt UNTERFELD umfasst den Neubau von fünf Einfamilienhäusern mit Carports am Unterfeldweg in Hunzenschwil. Die Wohnhäuser sind als zusammenhängende, klar strukturierte Bebauung konzipiert und bilden eine ruhige, einheitliche Gebäudegruppe innerhalb des bestehenden Wohnquartiers. Die Anordnung der Häuser orientiert sich an der Parzellenstruktur und schafft eine klare räumliche Ordnung zwischen privaten Gartenbereichen und gemeinsamer Erschliessung. Die Gebäude verfügen über eine kompakte, funktionale Organisation über mehrere Geschosse. Im Erdgeschoss befinden sich die offenen Wohn- und Essbereiche mit direktem Bezug zu den Aussenräumen und Gärten. Die oberen Geschosse nehmen die privaten Schlaf- und Rückzugsräume auf und bieten eine klare Trennung zwischen gemeinschaftlichen und privaten Nutzungen. Die Grundrisse sind so konzipiert, dass grosszügige Raumabfolgen, gute Belichtung und eine flexible Nutzung der Räume entstehen. Architektonisch werden die Häuser durch eine prägnante Dachform und eine klare Fassadengliederung geprägt. Die steilen Satteldächer mit einer Dachneigung von rund 45 Grad verleihen der Bebauung eine markante Silhouette und knüpfen gleichzeitig an die ortstypische Bautradition an. Grosszügige Fensterflächen und zurückhaltende Fassadenmaterialien schaffen ein ruhiges und zeitgemässes Erscheinungsbild. ",
+    paragraph3:
+      "Die Aussenräume werden als private Gartenbereiche mit Grünflächen, Bepflanzungen und versickerungsfähigen Belägen gestaltet. Durch die klare Zonierung zwischen Wohnbereich, Garten und Erschliessung entsteht eine hohe Aufenthaltsqualität sowohl im Innen- als auch im Aussenraum. UNTERFELD steht für eine zeitgemässe Wohnbebauung, die traditionelle Gebäudeformen mit moderner Architektur verbindet. Das Projekt schafft hochwertige Einfamilienhäuser mit klar strukturierten Grundrissen, grosszügigen Aussenräumen und einer harmonischen Einbettung in das bestehende Wohnumfeld.",
+    image: {
+      src: "/images/startPage.jpg",
+      alt: "Facade Detail",
+      type: "image",
+    },
+    adresse: "Unterfeldweg 7",
+    plz: "5502",
+    ort: "Hunzenschwil",
+    baujahr: "2024",
+    bauherrschaft: "Privat",
+  },
+  {
+    id: "bollacker",
+    title: "BOLLACKER",
+    paragraph:
+      "Die Reihenhausbebauung ordnet 18 Stadthäuser in zwei klar geführten Baukörpern und schafft eine strukturierte, urbane Wohnanlage. Durchdachte Grundrisse, private Aussenräume und ein gemeinsamer Freiraum erzeugen hochwertige Wohnqualität und ein stimmiges Gesamtbild.",
+    title2: "Urbanes Reihenhausensemble",
+    rightImage: "/images/bollacker2.jpg",
+    paragraph2:
+      "Das Projekt BOLLACKER umfasst die Entwicklung einer Wohnüberbauung mit 18 modernen Stadthäusern am Bollackerweg in Killwangen. Die Anlage ist als klar strukturierte Reihenhausbebauung konzipiert und gliedert sich in zwei parallel geführte Baukörper, die entlang des Grundstücks angeordnet sind. Zwischen den Gebäudezeilen entsteht ein gemeinsamer Freiraum, der als zentrale Erschliessungs- und Begegnungszone dient und die einzelnen Häuser miteinander verbindet. Die Stadthäuser sind über mehrere Geschosse organisiert und bieten eine klare funktionale Gliederung der Wohnbereiche. Im Erdgeschoss befinden sich die grosszügigen Wohn- und Essbereiche mit direktem Bezug zu den privaten Gartenflächen. Die Obergeschosse nehmen die Schlaf- und Rückzugsräume auf, während im Attikageschoss grosszügige Masterbereiche mit weitläufigen Terrassen entstehen. Diese Staffelung schafft differenzierte Wohnqualitäten und ermöglicht eine intensive Beziehung zwischen Innen- und Aussenraum.",
+    paragraph3:
+      "Die Architektur wird durch eine markante, horizontale Fassadengliederung geprägt. Grosszügige Fensterbänder, plastisch ausgebildete Gebäudekanten und auskragende Volumen verleihen den Baukörpern eine eigenständige architektonische Identität. Die Attikageschosse mit ihren grossen Terrassen bilden den oberen Abschluss der Gebäude und schaffen zusätzliche private Aussenräume mit weitem Ausblick über die Umgebung. Die Freiraumgestaltung verbindet private Gartenbereiche mit gemeinschaftlichen Grünflächen und klar geführten Erschliessungswegen. Durch die Kombination aus kompakter Bauweise, hochwertigen Aussenräumen und klar strukturierter Architektur entsteht ein modernes Wohnensemble mit urbanem Charakter.BOLLACKER steht für eine zeitgemässe Reihenhausüberbauung, die grosszügige Wohnräume, private Aussenbereiche und eine prägnante architektonische Gestaltung miteinander verbindet und ein hochwertiges Wohnumfeld im wachsenden Wohnstandort Killwangen schafft.",
+    image: {
+      src: "/images/bollacker.jpg",
+      alt: "Facade Detail",
+      type: "image",
+    },
+    adresse: "Sennenbergstrasse",
+    plz: "8956",
+    ort: "Killwangen",
+    baujahr: "2022",
+    bauherrschaft: "Privat",
+    gallery: [
+      { src: "/images/bollacker.jpg", alt: "Exterior Garden" },
+      { src: "/images/bollacker3.jpg", alt: "Exterior Garden" },
+      { src: "/images/bollacker4.jpg", alt: "Exterior Garden" },
     ],
   },
   {
+    id: "avera",
+    title: "avera",
+    paragraph:
+      "Die Bebauung umfasst zwei klar strukturierte Einfamilienhäuser und fügt sich präzise in die bestehende Quartierstruktur ein. Grosszügige Grundrisse, private Gartenbereiche mit Pool und eine klare Organisation schaffen hochwertige Wohnqualität und ein stimmiges Gesamtbild.",
+    title2: "Moderne Einfamilienhäuser",
+    rightImage: "/images/avera2.jpg",
+    paragraph2:
+      "Das Projekt AVERA umfasst den Neubau von zwei modernen Einfamilienhäusern in einer gewachsenen Wohnlage in Tägerig. Grundlage des Projekts war der Rückbau eines bestehenden Gebäudes und die Entwicklung eines neuen Wohnkonzepts, das sich präzise in die bestehende Quartierstruktur integriert und gleichzeitig eine zeitgemässe architektonische Sprache formuliert. Die beiden Wohnhäuser sind als klare, kubische Baukörper mit Flachdach konzipiert. Ihre Architektur folgt einer ruhigen, reduzierten Formensprache, die durch präzise Proportionen, grosszügige Öffnungen und eine sorgfältige Materialwahl geprägt ist. Grossflächige Verglasungen schaffen helle Innenräume und verbinden die Wohnbereiche unmittelbar mit den privaten Gartenflächen und Aussenräumen. Im Erdgeschoss entstehen grosszügige, offen gestaltete Wohn- und Essbereiche mit direktem Zugang zum Garten und zu den Terrassen. Die oberen Geschosse nehmen die Schlaf- und Rückzugsräume auf und bieten eine klare funktionale Gliederung der privaten Wohnbereiche. Ergänzt wird das Raumprogramm durch grosszügige Badezimmer, Ankleiden und zusätzliche Aufenthaltsbereiche. ",
+    paragraph3:
+      "Die Aussenräume bilden einen zentralen Bestandteil des Wohnkonzepts. Jede Wohneinheit verfügt über einen privaten Gartenbereich mit Pool sowie grosszügige Terrassenflächen, die das Wohnen nach aussen erweitern und eine hohe Aufenthaltsqualität schaffen. AVERA steht für eine moderne Interpretation des klassischen Einfamilienhauses: klare Architektur, grosszügige Grundrisse und eine starke Verbindung zwischen Innenraum, Garten und Landschaft.",
+    image: {
+      src: "/images/avera.jpg",
+      alt: "Facade Detail",
+      type: "image",
+    },
+    adresse: "Gartenweg",
+    plz: "5522",
+    ort: "Tägerig",
+    baujahr: "2023",
+    bauherrschaft: "Privat",
+    gallery: [
+      { src: "/images/avera3.jpg", alt: "Exterior Garden" },
+      { src: "/images/avera4.jpg", alt: "Exterior Garden" },
+      { src: "/images/avera5.jpg", alt: "Exterior Garden" },
+      { src: "/images/avera6.jpg", alt: "Exterior Garden" },
+      { src: "/images/avera7.jpg", alt: "Exterior Garden" },
+      { src: "/images/avera8.jpg", alt: "Exterior Garden" },
+      { src: "/images/avera9.jpg", alt: "Exterior Garden" },
+      { src: "/images/avera10.jpg", alt: "Exterior Garden" },
+    ],
+  },
+
+  /*{
     id: "sternen",
     title: "Sternen",
     title2: "Mehrfamilienhaus mit Gewerbeanteil 'STERNEN'",
@@ -672,12 +768,13 @@ const projects = [
     ort: "Binningen, Baslerstrasse 9",
     baujahr: "Umbau",
     bauherrschaft: "Gewerbe- und Wohngebäude",
-  },
+  },*/
 ];
 
 import PlansSlider from "@/components/projekte/PlansSlider";
 import ProjectGallery from "@/components/projekte/ProjectGallery";
 import Gestalten from "@/components/home/Gestalten";
+import { address } from "motion/react-client";
 
 export default async function ProjectDetailPage({ params }) {
   const { id } = await params;

@@ -10,6 +10,7 @@
   src: url("/font/Inter_18pt-Thin.ttf") format("truetype");
   font-weight: 100;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -17,6 +18,7 @@
   src: url("/font/Inter_18pt-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -24,6 +26,7 @@
   src: url("/font/Inter_18pt-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -31,6 +34,7 @@
   src: url("/font/Inter_18pt-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -38,6 +42,7 @@
   src: url("/font/Inter_18pt-SemiBold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -45,6 +50,7 @@
   src: url("/font/Inter_18pt-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
 /* Optional: set as default font */
@@ -168,6 +174,24 @@ html {
   }
   body {
     @apply bg-background text-foreground;
+  }
+  /* Global Button Effects */
+  button, 
+  .btn,
+  [role="button"] {
+    @apply transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-95 cursor-pointer relative overflow-hidden will-change-transform;
+  }
+  
+  button:hover,
+  .btn:hover,
+  [role="button"]:hover {
+    @apply -translate-y-1 scale-[1.03] shadow-[0_20px_40px_rgba(0,0,0,0.08)];
+  }
+
+  button:active,
+  .btn:active,
+  [role="button"]:active {
+    @apply translate-y-0 scale-95 shadow-none transition-none;
   }
 }
 @layer utilities {

@@ -73,7 +73,7 @@ export function CaseExample() {
         >
           <div className="absolute inset-0 h-[800px] bg-gradient-to-t from-black via-black/50 to-transparent z-10" />
           <motion.img
-            src="/images/gallery2.jpg"
+            src="/images/home11.jpg"
             alt="Casa Five Development"
             className="w-full h-[800px] object-cover"
             whileHover={{ scale: 1.02 }}

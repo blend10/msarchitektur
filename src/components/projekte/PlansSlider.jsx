@@ -26,12 +26,14 @@ export default function PlansSlider({ plans }) {
 
         <div className="relative bg-gray-50/50 rounded-sm overflow-hidden min-h-[500px] flex flex-col justify-between">
           <div className="relative flex-1 w-full h-full min-h-[400px] flex items-center justify-center p-8 md:p-12">
-            <button
-              onClick={prevPlan}
-              className="absolute left-4 z-10 p-2 bg-white/80 hover:bg-white text-gray-800 transition-colors rounded-full shadow-sm"
-            >
-              <ChevronLeft size={24} strokeWidth={1.5} />
-            </button>
+            {plans.length > 1 && (
+              <button
+                onClick={prevPlan}
+                className="absolute left-4 z-10 p-2 bg-white/80 hover:bg-white text-gray-800 transition-colors rounded-full shadow-sm"
+              >
+                <ChevronLeft size={24} strokeWidth={1.5} />
+              </button>
+            )}
 
             <div className="relative w-full h-full max-w-4xl mx-auto aspect-[16/9] md:aspect-[4/3]">
               <Image
@@ -42,34 +44,38 @@ export default function PlansSlider({ plans }) {
               />
             </div>
 
-            <button
-              onClick={nextPlan}
-              className="absolute right-4 z-10 p-2 bg-white/80 hover:bg-white text-gray-800 transition-colors rounded-full shadow-sm"
-            >
-              <ChevronRight size={24} strokeWidth={1.5} />
-            </button>
+            {plans.length > 1 && (
+              <button
+                onClick={nextPlan}
+                className="absolute right-4 z-10 p-2 bg-white/80 hover:bg-white text-gray-800 transition-colors rounded-full shadow-sm"
+              >
+                <ChevronRight size={24} strokeWidth={1.5} />
+              </button>
+            )}
           </div>
 
-          <div className="bg-white border-t border-gray-100">
-            <div className="flex justify-center items-center overflow-x-auto">
-              {plans.map((plan, index) => {
-                const isActive = currentIndex === index;
-                return (
-                  <button
-                    key={plan.id}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`relative px-8 py-6 text-sm font-medium transition-colors duration-300  whitespace-nowrap ${isActive ? "text-gray-900" : "text-gray-400 hover:text-gray-600"}`}
-                  >
-                    {plan.label}
-                    <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gray-300 " />
-                    {isActive && (
-                      <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gray-900" />
-                    )}
-                  </button>
-                );
-              })}
+          {plans.length > 1 && (
+            <div className="bg-white border-t border-gray-100">
+              <div className="flex justify-center items-center overflow-x-auto">
+                {plans.map((plan, index) => {
+                  const isActive = currentIndex === index;
+                  return (
+                    <button
+                      key={plan.id}
+                      onClick={() => setCurrentIndex(index)}
+                      className={`relative px-8 py-6 text-sm font-medium transition-colors duration-300  whitespace-nowrap ${isActive ? "text-gray-900" : "text-gray-400 hover:text-gray-600"}`}
+                    >
+                      {plan.label}
+                      <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gray-300 " />
+                      {isActive && (
+                        <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gray-900" />
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </section>

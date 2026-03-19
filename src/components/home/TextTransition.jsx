@@ -10,28 +10,37 @@ const ScrollRevealText = ({ text, className = "" }) => {
   const lines = text.split("\n");
 
   useEffect(() => {
+    let rafId = null;
+
     const handleScroll = () => {
-      if (!containerRef.current) return;
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        if (!containerRef.current) { rafId = null; return; }
 
-      const { top } = containerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
+        const { top } = containerRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
 
-      // Start revealing when the text enters the bottom 90% of screen
-      const start = windowHeight * 0.9;
-      // Finish revealing when it reaches the top 20%
-      const end = windowHeight * 0.2;
+        // Start revealing when the text enters the bottom 90% of screen
+        const start = windowHeight * 0.9;
+        // Finish revealing when it reaches the top 20%
+        const end = windowHeight * 0.2;
 
-      let p = (start - top) / (start - end);
-      if (p < 0) p = 0;
-      if (p > 1) p = 1;
+        let p = (start - top) / (start - end);
+        if (p < 0) p = 0;
+        if (p > 1) p = 1;
 
-      setProgress(p);
+        setProgress(p);
+        rafId = null;
+      });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     // Initial check
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   // Calculate total character count for correct progress mapping

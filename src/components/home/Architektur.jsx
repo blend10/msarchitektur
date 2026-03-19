@@ -37,7 +37,7 @@ const Architektur = () => {
             />
           </div>
 
-          <div className="space-y-6 md:pl-4 lg:pl-0">
+          <div className="space-y-6 md:pl-4 lg:pl-0 px-4 md:px-0">
             <p className="text-[#0D0D0D] text-base md:text-lg font-light leading-relaxed max-w-3xl">
               Wir verstehen Architektur als Ergebnis eines präzisen und
               partnerschaftlichen Prozesses. In enger Abstimmung mit

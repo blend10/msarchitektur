@@ -1,150 +1,165 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Gestalten from "@/components/home/Gestalten";
 
 const JournalPage = () => {
-  const [activeFilter, setActiveFilter] = useState("ALLE");
-
   const projects = [
     {
       id: 1,
-      category: "NEUE PROJEKTE",
-      year: "05.12.2025",
-      title: "Aktuelle Projekte in Planung, Ausführung oder Visualisierung",
-      image: "/images/plan1.png",
+      year: "März 2026",
+      title: "Pura, Oftringen – Baubeginn im Juli geplant",
+      image: "/images/plan1.jpg",
       alt: "Modern villa with pool",
+      description:
+        "Der Baustart des Projekts Pura ist für Juli 2026 vorgesehen. Die Umsetzung des Projekts tritt damit in die nächste Phase ein.",
     },
     {
       id: 2,
-      category: "NEUE PROJEKTE",
-      year: "25.10.2025",
-      title: "Aktuelle Projekte in Planung, Ausführung oder Visualisierung",
-      image: "/images/plan2.png",
+      year: "März 2026",
+      title: "Halden, Wohlenschwil – Baubeginn im Juni geplant",
+      image: "/images/plan2.jpg",
       alt: "Residential complex with gardens",
+      description:
+        "Das Projekt Halden geht in die Realisierung. Der Baubeginn ist für Juni 2026 terminiert.",
     },
     {
       id: 3,
-      category: "ENTWURFSSKIZZEN",
-      year: "17.12.2025",
-      title:
-        "Erste Skizzen und konzeptionelle Studien als Grundlage unserer Architektur",
-      image: "/images/plan3.png",
+      year: "März 2026",
+      title: "CasaFive, Unterengstringen – Baubeginn im Juni geplant",
+      image: "/images/plan3.jpg",
       alt: "Architectural sketch of building",
+      description:
+        "Der Baustart für das Projekt CasaFive ist auf Juni 2026 angesetzt. Die Umsetzung der fünf Einheiten beginnt planmässig.",
     },
     {
       id: 4,
-      category: "ENTWURFSSKIZZEN",
-      year: "12.06.2025",
-      title:
-        "Erste Skizzen und konzeptionelle Studien als Grundlage unserer Architektur",
+      year: "23. März 2026",
+      title: "Neue Website online",
       image: "/images/plan4.png",
       alt: "Architectural sketch of villa",
+      description:
+        "Die neue Website der MS Architektur AG ist seit dem 23. März 2026 online und präsentiert Projekte, Methodik und Leistungen in neuer Form.",
     },
     {
       id: 5,
-      category: "ENTWURFSSKIZZEN",
-      year: "01.07.2025",
-      title:
-        "Erste Skizzen und konzeptionelle Studien als Grundlage unserer Architektur",
-      image: "/images/plan5.png",
+      year: "14. März 2026",
+      title: "Yakin Arena, Oberengstringen – Projekt erfolgreich abgeschlossen",
+      image: "/images/plan5.jpg",
       alt: "Architectural sketch of commercial building",
+      description:
+        "Sämtliche Auflagen für die Schlussabnahme wurden am 14. März 2026 bereinigt und genehmigt. Das Projekt Yakin Arena ist damit abgeschlossen.",
     },
     {
       id: 6,
-      category: "NEUE PROJEKTE",
-      year: "05.12.2025",
-      title: "Baustellenmomente während der Realisierung unserer Projekte.",
-      image: "/images/plan6.jpg",
+      year: "Februar 2026",
+      title: "Vista, Spreitenbach – Projekt geht in die Baueingabe",
+      image: "/images/plan6.png",
       alt: "Construction site meeting",
+      description:
+        "Das Projekt Vista wurde im Februar 2026 mit der Gemeinde vorbesprochen und wird nun zur Baueingabe eingereicht.",
     },
     {
       id: 7,
-      category: "NEUE PROJEKTE",
-      year: "22.08.2025",
-      title: "Aktuelle Projekte in Planung, Ausführung oder Visualisierung",
+      year: "12. Februar 2026",
+      title: "Riet, Unterengstringen – Baubewilligung erhalten",
       image: "/images/plan7.png",
       alt: "Contemporary building design",
+      description:
+        "Am 12. Februar 2026 wurde für das Projekt Riet die Baubewilligung erteilt.",
     },
     {
       id: 8,
-      category: "NEUE PROJEKTE",
-      year: "14.07.2025",
-      title: "Baustellenmomente während der Realisierung unserer Projekte.",
+      year: "Januar 2026",
+      title: "CasaFive, Unterengstringen – Vermarktung gestartet",
       image: "/images/plan8.jpg",
       alt: "Construction team discussion",
+      description:
+        "Im Januar 2026 startet die Vermarktung des Projekts CasaFive. Es werden fünf Einheiten angeboten, Preise ab CHF 3.5 Mio.",
     },
     {
       id: 9,
-      category: "NEUE PROJEKTE",
-      year: "16.04.2025",
-      title: "Aktuelle Projekte in Planung, Ausführung oder Visualisierung",
-      image: "/images/plan9.png",
+      year: "November 2025",
+      title: "Halden, Wohlenschwil – Vermarktung gestartet",
+      image: "/images/plan9.jpg",
       alt: "Modern residence design",
+      description:
+        "Seit November 2025 befindet sich das Projekt Halden in der Vermarktung. Es werden vier Doppeleinfamilienhäuser ab CHF 1.3 Mio. angeboten.",
+    },
+    {
+      id: 10,
+      year: "November 2025",
+      title: "Pura, Oftringen – Vermarktung gestartet",
+      image: "/images/plan10.jpg",
+      alt: "Modern residence design",
+      description:
+        "Das Projekt Pura ist seit November 2025 in der Vermarktung. Es werden vier Eigentumswohnungen ab CHF 830’000 angeboten.",
+    },
+    {
+      id: 11,
+      year: "6. Oktober 2025",
+      title: "Halden, Wohlenschwil – Baubewilligung erhalten",
+      image: "/images/plan11.jpg",
+      alt: "Modern residence design",
+      description:
+        "Am 6. Oktober 2025 wurde für das Projekt Halden die Baubewilligung erteilt.",
+    },
+    {
+      id: 12,
+      year: "29. September 2025",
+      title: "CasaFive, Unterengstringen – Baubewilligung erhalten",
+      image: "/images/plan12.jpg",
+      alt: "Modern residence design",
+      description:
+        "Am 29. September 2025 wurde das Projekt CasaFive bewilligt.",
+    },
+    {
+      id: 13,
+      year: "9. Juli 2025",
+      title: "Pura, Oftringen – Baubewilligung erhalten",
+      image: "/images/plan13.jpg",
+      alt: "Am 9. Juli 2025 wurde für das Projekt Pura die Baubewilligung erteilt.",
+      description:
+        "Am 9. Juli 2025 wurde für das Projekt Pura die Baubewilligung erteilt.",
     },
   ];
 
-  const filteredProjects =
-    activeFilter === "ALLE"
-      ? projects
-      : projects.filter((project) => project.category === activeFilter);
-
   return (
     <div>
-      <div className="container mx-auto px-8 py-40">
+      <div className="container mx-auto px-6 md:px-8 py-24 md:py-40">
         <div className="mb-12">
-          <h1 className="text-[60px] text-[#21201B] font-light tracking-tight leading-tight mb-8">
-            Unser Journal zeigt Projekte, Skizzen und <br />
+          <h1 className="text-4xl md:text-5xl lg:text-[60px] text-[#21201B] font-light tracking-tight leading-tight mb-8">
+            Unser Journal zeigt Projekte, Skizzen und <br className="hidden md:block" />
             Einblicke ehrlich und nah am Prozess.
           </h1>
-
-          <div className="flex gap-4 ">
-            {["ALLE", "NEUE PROJEKTE", "ENTWURFSSKIZZEN", "BAUSTELLE"].map(
-              (filter) => (
-                <button
-                  key={filter}
-                  onClick={() => setActiveFilter(filter)}
-                  className={` px-4 py-2 text-sm  transition-colors border  ${
-                    activeFilter === filter
-                      ? "bg-black text-[#FAFFFF]"
-                      : "bg-[#F9F9F9] text-black hover:bg-[black] hover:text-[#FAFFFF]"
-                  }`}
-                >
-                  {filter}
-                </button>
-              ),
-            )}
-          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {filteredProjects.map((project) => (
+          {projects.slice(0, 13).map((project) => (
             <div
               key={project.id}
               className="group cursor-pointer overflow-hidden"
             >
-              <div className="relative h-[450px] mb-4 overflow-hidden bg-gray-100">
+              <div className="relative h-[300px] md:h-[450px] overflow-hidden bg-gray-100">
                 <Image
                   src={project.image}
                   alt={project.alt}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute w-full flex gap-1 bottom-0 bg-black text-white text-xs px-3 py-2.5 uppercase tracking-wide">
-                  <p>[{project.year}]</p> <p>[{project.category}]</p>
-                </div>
               </div>
-              <p className="text-[#21201B] text-base leading-relaxed">
+              <div className=" w-full flex gap-1 text-black/50 text-[14px] py-1 uppercase ">
+                <p>{project.year}</p>
+              </div>
+              <p className="text-[#21201B] font-semibold mb-1">
                 {project.title}
+              </p>
+              <p className="text-[#21201B] text-[14px] leading-relaxed">
+                {project.description}
               </p>
             </div>
           ))}
-        </div>
-
-        <div className="flex justify-center">
-          <button className="border border-[#21201B] text-[#21201B] px-8 py-3 text-sm uppercase tracking-wide hover:bg-[#21201B] hover:text-white transition-colors duration-300">
-            ALLE ANZEIGEN
-          </button>
         </div>
       </div>
       <Gestalten src="/images/footerBg.png" />

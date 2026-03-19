@@ -1,24 +1,28 @@
 import { motion, AnimatePresence } from "motion/react";
-import {
-  X,
-  CheckCircle2,
-  Clock,
-  DollarSign,
-  Users,
-  ChevronRight,
-} from "lucide-react";
-import React from "react";
+import { X, ChevronRight } from "lucide-react";
+import React, { Fragment } from "react";
 
 // --- Interfaces ---
+interface SubSection {
+  title: string;
+  items: string[];
+}
+
+interface Step {
+  label: string;
+  subSection: SubSection;
+  descriptionLines?: string[]; // Multiple lines for the step context
+  footerNote?: string; // Optional footer note for this specific step
+}
+
 interface PhaseDetail {
   id: number;
+  totalPhases: number;
   title: string;
-  color: string;
-  description: string;
-  why: string;
-  keyDecisions: { icon: any; title: string; description: string }[];
-  subSteps: string[];
-  clientBenefit: string;
+  color?: string;
+  descriptionLines: string[];
+  footerNote: string;
+  steps: Step[];
 }
 
 interface PhaseDetailPanelProps {
@@ -27,595 +31,1073 @@ interface PhaseDetailPanelProps {
   clientType: "private" | "investor";
 }
 
-// --- Data (Unchanged) ---
-const phaseData: Record<
-  number,
-  { private: PhaseDetail; investor: PhaseDetail }
-> = {
+// --- Mock Data ---
+const phaseData: Record<number, Record<"private" | "investor", PhaseDetail>> = {
   1: {
     private: {
       id: 1,
-      title: "Analyse  & Strategie",
-      color: "#FF6B35",
-      description:
-        "Wir beginnen damit, Ihren Lebensstil, Ihre Vorlieben und räumlichen Bedürfnisse genau zu verstehen. Diese Phase schafft die Grundlage für alle weiteren Schritte.",
-      why: "Strategische Analysen verhindern kostspielige Änderungen zu einem späteren Zeitpunkt. Durch gezielte Investitionen zu Beginn stellen wir sicher, dass das Design Ihre Vision und Bedürfnisse präzise widerspiegelt.",
-      keyDecisions: [
+      totalPhases: 3,
+      title: "Projektdefinition und Konzeptphase",
+      descriptionLines: [
+        "In dieser Phase legen wir die Grundlage für die gesamte Projektentwicklung.",
+        "Wir lernen die Bauherrschaft und das Projektvorhaben kennen, analysieren die Ausgangssituation des Grundstücks und definieren gemeinsam die wichtigsten Anforderungen an das zukünftige Gebäude.",
+        "",
+        "Dabei werden Ziele, Nutzung, Budgetrahmen sowie zeitliche Vorstellungen des Projekts besprochen.",
+      ],
+      footerNote:
+        "This conversation forms the basis for further project development.",
+      steps: [
         {
-          icon: Clock,
-          title: "Zeitplan",
-          description:
-            "Wir definieren früh einen klaren Zeitplan mit verbindlichen Meilensteinen für Planungssicherheit und Kontrolle.",
+          label: "Projektanfrage &\nErstgespräch",
+          subSection: {
+            title: "Erstes Kennenlernen und Besprechung des Projektvorhabens.",
+            items: [
+              "Ausgangssituation des Grundstücks",
+              "Ziele und Erwartungen der Bauherrschaft",
+              "Gewünschte Nutzung und Raumprogramm",
+              "Budgetrahmen",
+              "Zeitliche Vorstellungen",
+            ],
+          },
+          descriptionLines: [
+            "Im Erstgespräch lernen wir die Bauherrschaft und das Projektvorhaben kennen. Dabei besprechen wir insbesondere:",
+          ],
+          footerNote:
+            "Dieses Gespräch bildet die Grundlage für die weitere Projektentwicklung.",
         },
         {
-          icon: DollarSign,
-          title: "Budget",
-          description:
-            "Realistische Budgetparameter und Prioritäten werden früh festgelegt, um Designentscheidungen mit finanzieller Klarheit und Kontrolle in Einklang zu bringen.",
+          label: "Bedarfsanalyse und\n Projektverständnis",
+          subSection: {
+            title: "Analyse der Bedürfnisse und Definition der Projektziele.",
+            items: [
+              "Raumprogramm",
+              "Wohn- und Nutzungsanforderungen",
+              "Architektonische Vorstellungen",
+              "Langfristige Nutzung des Gebäudes",
+              "Mögliche Zukünftige Anpassungen",
+            ],
+          },
+          descriptionLines: [
+            "In dieser Phase analysieren wir die Bedürfnisse der Bauherrschaft im Detail und übersetzen diese in konkrete Projektanforderungen.",
+          ],
+          footerNote:
+            "Ziel ist ein klares Verständnis der Anforderungen an das zukünftige Gebäude.",
         },
         {
-          icon: Users,
-          title: "Kundeninput",
-          description:
-            "Wir sammeln frühzeitig relevante Erkenntnisse, um fundierte Entscheidungen zu treffen und das Projekt gezielt an Ihren Bedürfnissen auszurichten.",
+          label: "Analyse der\n Ausgangslage",
+          subSection: {
+            title:
+              "Analyse der rechtlichen, technischen und nachbarschaftlichen Rahmenbedingungen.",
+            items: [
+              "Bauzonen und Zonenreglement",
+              "Grenzabstände und Ausnützungsziffer",
+              "Gebäudehöhen und Volumenbeschränkungen",
+              "Dienstbarkeiten und Grundbucheinträge",
+              "Nachbarschaftliche Situation",
+              "Erschliessung und Infrastruktur",
+            ],
+          },
+          descriptionLines: [
+            "Vor der eigentlichen Projektentwicklung analysieren wir die Rahmenbedingungen des Grundstücks.",
+          ],
+          footerNote:
+            "Diese Analyse ermöglicht eine realistische Projektplanung und verhindert spätere Überraschungen im Bewilligungsverfahren.",
+        },
+        {
+          label: "Konzeptstudie und \nProjektidee",
+          subSection: {
+            title: "Entwicklung erster architektonischer Konzepte.",
+            items: [
+              "Mögliche Gebäudevolumen",
+              "Anordnung der Räume",
+              "Beziehung zwischen Innen- und Aussenraum",
+              "Einbindung in die Umgebung",
+              "Architektonische Gestaltung",
+            ],
+          },
+          descriptionLines: [
+            "Basierend auf den Anforderungen der Bauherrschaft entwickeln wir eine erste architektonische Projektidee.",
+          ],
+          footerNote:
+            "Die Konzeptstudie dient als Grundlage für die weitere Projektentwicklung.",
+        },
+        {
+          label: "Honorarvereinbarung",
+          subSection: {
+            title: "Definition der Zusammenarbeit und des Architektenhonorars.",
+            items: [
+              "Leistungsumfang des Architekten",
+              "Projektphasen",
+              "Honorarstruktur",
+              "Verantwortlichkeiten",
+            ],
+          },
+          descriptionLines: [
+            "Nach der Konzeptphase wird die Zusammenarbeit formalisiert.",
+          ],
+          footerNote:
+            "Dies schafft eine klare Grundlage für die weitere Zusammenarbeit.",
+        },
+        {
+          label: "Projektstrategie und \nZeitplanung",
+          subSection: {
+            title:
+              "Definition der Projektstrategie und des zeitlichen Projektablaufs.",
+            items: [
+              "Eine Projekt-Timeline",
+              "Zentrale Projektmeilensteine",
+              "Planungsschritte bis zur Baubewilligung",
+              "Mögliche Projektrisiken",
+              "Strategische Entscheidungsoptionen",
+            ],
+          },
+          descriptionLines: [
+            "Gemeinsam mit der Bauherrschaft definieren wir die strategische Ausrichtung des Projekts.",
+          ],
+          footerNote:
+            "Dies schafft eine klare Grundlage für die weitere Zusammenarbeit.",
+        },
+        {
+          label: "Grundstückvermessung",
+          subSection: {
+            title: "Vermessung des Grundstücks durch den Geometer.",
+            items: [
+              "Situationspläne",
+              "Höhenangaben",
+              "Grenzverläufe",
+              "Baugesuchsunterlagen",
+            ],
+          },
+          descriptionLines: [
+            "Der Geometer erstellt eine präzise Vermessung des Grundstücks.",
+          ],
+          footerNote: "",
+        },
+        {
+          label: "Vorprojekt und \n ausgearbeitete Projektstudie",
+          subSection: {
+            title: "Ausarbeitung der Projektstudie mit konkretem Raumprogramm.",
+            items: [
+              "Raumgrössen",
+              "Raumbeziehungen",
+              "Möblierungskonzepte",
+              "Gebäudestruktur",
+              "Nutzung der Aussenräume",
+            ],
+          },
+          descriptionLines: [
+            "Die Konzeptidee wird zu einem detaillierten Vorprojekt weiterentwickelt.",
+          ],
+          footerNote: "Das Vorprojekt bildet die Grundlage für das Baugesuch.",
+        },
+        {
+          label: "Behördliche\n Vorabklärung",
+          subSection: {
+            title: "Frühzeitige Abstimmung mit den Behörden.",
+            items: [
+              "Baurechtliche Auslegung Einzelner Vorschriften",
+              "Mögliche Projektoptimierungen",
+              "Anforderungen der Baubehörde",
+              "Bewilligungsfähigkeit des Projekts",
+            ],
+          },
+          descriptionLines: [
+            "Vor der Baueingabe werden zentrale Projektpunkte mit den Behörden besprochen.",
+          ],
+          footerNote:
+            "Diese Vorabklärung reduziert das Risiko im Bewilligungsverfahren erheblich.",
         },
       ],
-      subSteps: [
-        "Strategische Ziele",
-        "Standort- & Marktanalyse",
-        "Kostenrahmen & Machbarkeit",
-        "Entscheidungsgrundlage",
-      ],
-      clientBenefit:
-        "Klarheit und Sicherheit vor Projektstart – keine Überraschungen, keine unnötigen Kosten oder Umwege.",
     },
     investor: {
       id: 1,
-      title: "Market Analysis & Strategy",
-      color: "#FF6B35",
-      description:
-        "Data-driven analysis of market positioning, competitive landscape, and financial feasibility. We identify opportunities and mitigate risks.",
-      why: "Strategic positioning determines profitability. We analyze market demand and competitive advantages to maximize ROI from day one.",
-      keyDecisions: [
+      totalPhases: 3,
+      title: "Projektdefinition und Konzeptphase",
+      descriptionLines: [
+        "In dieser Phase prüfen wir gemeinsam mit dem Projektentwickler die grundlegenden Entwicklungsmöglichkeiten des Grundstücks. Wir analysieren die Ausgangssituation, untersuchen das Entwicklungspotenzial und erarbeiten erste Projektideen sowie mögliche Nutzungskonzepte",
+        "Dabei werden insbesondere Lage und Marktumfeld, rechtliche Rahmenbedingungen, mögliche Gebäudestrukturen sowie wirtschaftliche Grundlagen des Projekts betrachtet.",
+      ],
+      footerNote: "Maximale Rendite durch präzise Voranalyse.",
+      steps: [
         {
-          icon: Clock,
-          title: "Timeline",
-          description: "3-4 weeks including market research",
+          label: "Projektanfrage \nund Erstprüfung",
+          subSection: {
+            title:
+              "Erste Projektanfrage und Prüfung der grundsätzlichen Entwicklungsmöglichkeiten.",
+            items: [
+              "Lage und Marktumfeld",
+              "Mögliche Nutzung des Grundstücks",
+              "Grobes Entwicklungspotenzial",
+              "Investitionsrahmen",
+              "Projektstrategie des Entwicklers",
+            ],
+          },
+          descriptionLines: [
+            "Zu Beginn analysieren wir das potenzielle Entwicklungsprojekt gemeinsam mit dem Projektentwickler.",
+          ],
+          footerNote:
+            "Ziel ist eine erste Einschätzung, ob sich eine vertiefte Projektentwicklung lohnt.",
         },
         {
-          icon: DollarSign,
-          title: "Financial Model",
-          description: "ROI projections and exit strategies",
+          label: "Analyse der\n Ausgangslage",
+          subSection: {
+            title:
+              "Analyse der rechtlichen und planerischen Rahmenbedingungen des Grundstücks.",
+            items: [
+              "Bauzonen und Zonenreglement",
+              "Ausnützungsziffer und Bauvolumen",
+              "Grenzabstände und Höhenbeschränkungen",
+              "Dienstbarkeiten und Grundbucheinträge",
+              "nachbarschaftliche Situation",
+              "Erschliessung und Infrastruktur",
+            ],
+          },
+          descriptionLines: [
+            "Vor einer Investitionsentscheidung analysieren wir sämtliche relevanten Rahmenbedingungen.",
+          ],
+          footerNote:
+            "Diese Analyse bildet die Grundlage für eine realistische Projektentwicklung.",
         },
         {
-          icon: Users,
-          title: "Stakeholders",
-          description: "Investor alignment and partner coordination",
+          label: "Reservationsvereinbarung",
+          subSection: {
+            title:
+              "Reservation des Grundstücks zur Sicherung der Projektentwicklung.",
+            items: [
+              "Vertiefte Projektentwicklung",
+              "Durchführung von Abklärungen",
+              "Erstellung eines Businessplans",
+            ],
+          },
+          descriptionLines: [
+            "Um das Entwicklungsprojekt zu sichern, wird häufig eine Reservationsvereinbarung mit dem Eigentümer abgeschlossen.",
+          ],
+          footerNote: "ohne sofort den endgültigen Kauf auslösen zu müssen.",
+        },
+        {
+          label: "Konzeptstudie und \nEntwicklungsstrategie",
+          subSection: {
+            title:
+              "Entwicklung der architektonischen und städtebaulichen Projektidee.",
+            items: [
+              "mögliche Gebäudevolumen",
+              "Anzahl Einheiten",
+              "Nutzungskonzept",
+              "Erschliessung",
+              "Architektonische Struktur",
+            ],
+          },
+          descriptionLines: [
+            "In dieser Phase entwickeln wir erste Projektkonzepte und untersuchen verschiedene Entwicklungsszenarien.",
+          ],
+          footerNote:
+            "Die Konzeptstudie bildet die Grundlage für die wirtschaftliche Projektanalyse.",
+        },
+        {
+          label: "Wirtschaftlichkeitsanalyse\n und Businessplan",
+          subSection: {
+            title: "Analyse der wirtschaftlichen Tragfähigkeit des Projekts.",
+            items: [
+              "Baukostenprognose",
+              "Verkaufs- oder Mietpotenziale",
+              "Projektkostenstruktur",
+              "Renditeberechnung",
+              "Exit-Szenarien",
+            ],
+          },
+          descriptionLines: [
+            "Für Projektentwickler ist die Wirtschaftlichkeit zentral. Daher erstellen wir eine umfassende Projektanalyse.",
+          ],
+          footerNote:
+            "Der Businessplan bildet die Grundlage für Investitionsentscheidungen.",
+        },
+        {
+          label: "Projektstrategie und \nZeitplanung",
+          subSection: {
+            title:
+              "Definition der Projektstrategie und Erstellung einer Projekt-Timeline.",
+            items: [
+              "Projektphasen",
+              "Zeitliche Meilensteine",
+              "Vermarktungsstrategie",
+              "Bewilligungsstrategie",
+              "Mögliche Projektrisiken",
+            ],
+          },
+          descriptionLines: ["Wir definieren den strategischen Projektablauf."],
+          footerNote: "",
+        },
+        {
+          label: "Grundstückskauf und\n Projektstart",
+          subSection: {
+            title:
+              "Beurkundung des Grundstückskaufs und Start der Projektentwicklung.",
+            items: [
+              "Notarielle Beurkundung",
+              "Finanzierung des Grundstücks",
+              "Sicherstellung der Projektentwicklung",
+            ],
+          },
+          descriptionLines: [
+            "Nach positiver Projektanalyse erfolgt der Grundstückskauf durch den Projektentwickler.",
+          ],
+          footerNote:
+            "Damit beginnt die konkrete Umsetzung der Projektentwicklung.",
         },
       ],
-      subSteps: [
-        "Market analysis",
-        "Financial feasibility",
-        "Zoning analysis",
-        "Risk assessment",
-        "Investment thesis",
-      ],
-      clientBenefit:
-        "Confident investment decisions backed by data. Clear path to profitability with quantified risks.",
     },
   },
   2: {
     private: {
       id: 2,
-      title: "Design & Planning",
-      color: "#00B4D8",
-      description:
-        "Creative exploration within strategic parameters. We develop design solutions that balance aesthetics, function, and budget.",
-      why: "Structured creativity ensures beautiful spaces that actually work. We iterate intelligently to refine every detail.",
-      keyDecisions: [
+      totalPhases: 3,
+      title: "Projektierung und Baubewilligungsverfahren",
+      descriptionLines: [
+        "In dieser Phase wird das Projekt konkret ausgearbeitet und die Baueingabe vorbereitet.Fachplaner werden eingebunden, die Kostenplanung erstellt und das Projekt gemäss Behördenanforderungen weiterentwickelt.",
+      ],
+      footerNote: "Von der Skizze zum bewilligten Projekt.",
+      steps: [
         {
-          icon: Clock,
-          title: "Timeline",
-          description: "6-8 weeks for design development",
+          label: "Fachplanerorganisation",
+          subSection: {
+            title: "Zusammensetzung des Planungsteams.",
+            items: [
+              "Structural engineer (structural analysis)",
+              "HVAC engineer (building services engineering)",
+              "Geologist",
+              "Visualisierungen",
+              "Baugespann",
+            ],
+          },
+          descriptionLines: [
+            "Various specialist planners are involved in project planning.",
+          ],
+          footerNote:
+            "Der Architekt koordiniert sämtliche Fachplaner und stellt eine reibungslose Zusammenarbeit sicher.",
         },
         {
-          icon: DollarSign,
-          title: "Budget",
-          description: "Material selections and cost validation",
+          label: "Kostenplanung bis \nBaubewilligung",
+          subSection: {
+            title: "Kostenübersicht für die Planungsphase.",
+            items: [
+              "Planungskosten",
+              "Fachplanerhonorare",
+              "Baugespann",
+              "Visualisierungen",
+              "Gutachten und Untersuchungen",
+            ],
+          },
+          descriptionLines: [
+            "Wir erstellen eine Kostenübersicht für alle Projektaufwendungen bis zur Baubewilligung bzw. Kreditfreigabe.",
+          ],
+          footerNote:
+            "Diese Kostenplanung schafft Transparenz für die Bauherrschaft und bildet eine wichtige Grundlage für weitere Entscheidungen.",
         },
         {
-          icon: Users,
-          title: "Client Input",
-          description: "Regular design reviews and refinements",
+          label: "Projektoptimierung nach \nBehördenrückmeldung",
+          subSection: {
+            title: "Weiterentwicklung des Projekts gemäss Behördenrückmeldung.",
+            items: [
+              "Gebäudevolumen",
+              "Abständen",
+              "Höhen",
+              "Nutzungskonzept",
+              "Gestaltung",
+            ],
+          },
+          descriptionLines: [
+            "Das Vorprojekt wird gemäss Rückmeldungen der Behörden weiter optimiert.",
+          ],
+          footerNote:
+            "Ziel ist es, die Anforderungen der Behörden zu erfüllen und die Grundlage für eine erfolgreiche Baueingabe zu schaffen.",
+        },
+        {
+          label: "Projektinformation \nder Nachbarschaft",
+          subSection: {
+            title: "Information der betroffenen Nachbarschaft.",
+            items: [
+              "Transparente Kommunikation",
+              "Frühzeitige Klärung Von Fragen",
+              "Vermeidung von Einsprachen",
+            ],
+          },
+          descriptionLines: [
+            "Vor der Baueingabe kann das Projekt der betroffenen Nachbarschaft präsentiert werden.",
+          ],
+          footerNote:
+            "Eine frühzeitige Information trägt zu einem reibungsloseren Bewilligungsverfahren bei.",
+        },
+        {
+          label: "Baueingabe",
+          subSection: {
+            title: "Einreichung des Baugesuchs.",
+            items: [
+              "Architekturpläne",
+              "Situationsplan",
+              "Energienachweis",
+              "Fachplanungen",
+              "Baubeschrieb",
+              "Visualisierungen",
+            ],
+          },
+          descriptionLines: [
+            "Das vollständige Baugesuch wird bei der zuständigen Baubehörde eingereicht.",
+          ],
+          footerNote:
+            "Alle notwendigen Unterlagen werden koordiniert und vollständig eingereicht.",
+        },
+        {
+          label: "Baubewilligung",
+          subSection: {
+            title: "Erteilung der Baubewilligung durch die Behörden.",
+            items: [""],
+          },
+          descriptionLines: [
+            "Nach Abschluss des Bewilligungsverfahrens wird die Baubewilligung durch die zuständigen Behörden erteilt.",
+          ],
+          footerNote: "",
         },
       ],
-      subSteps: [
-        "Concept design",
-        "Material selection",
-        "Technical detailing",
-        "Design refinement",
-        "Final approval",
-      ],
-      clientBenefit:
-        "A home that reflects your vision, backed by technical precision and budget control.",
     },
     investor: {
       id: 2,
-      title: "Value Engineering",
-      color: "#00B4D8",
-      description:
-        "Market-responsive design optimized for construction efficiency. Every decision is evaluated against cost impact.",
-      why: "Design directly impacts costs and sale prices. We engineer value at every level to minimize field changes.",
-      keyDecisions: [
+      totalPhases: 3,
+      title: "Projektierung und Baubewilligungsverfahren",
+      descriptionLines: [
+        "In dieser Phase wird das Projekt planerisch vertieft und das Baugesuch vorbereitet.Fachplaner werden eingebunden, die Projektkosten detailliert analysiert und das Projekt gemäss den Anforderungen der Behörden weiterentwickelt. Dabei werden Planungsteam und Kostenstruktur definiert, das Projekt bei Bedarf optimiert sowie das vollständige Baugesuch bis zur Baubewilligung begleitet.",
+      ],
+      footerNote: "Wirtschaftliche Planung ist der Schlüssel zum Erfolg.",
+      steps: [
         {
-          icon: Clock,
-          title: "Fast-Track",
-          description: "4-6 weeks with overlapping permits",
+          label: "Fachplanerorganisation",
+          subSection: {
+            title: "Zusammensetzung des Planungsteams.",
+            items: [
+              "Bauingenieur",
+              "HLKSE-Planer",
+              "Geologe",
+              "Schadstoffuntersuchungen",
+              "Visualisierungen",
+              "Baugespann",
+            ],
+          },
+          descriptionLines: [
+            "Für die Projektplanung werden verschiedene Fachplaner beigezogen.",
+          ],
+          footerNote:
+            "Der Architekt koordiniert sämtliche Fachplaner und stellt die Zusammenarbeit des Planungsteams sicher.",
         },
         {
-          icon: DollarSign,
-          title: "Cost Control",
-          description: "Target cost per SF with variance tracking",
+          label: "Projektkostenplanung\n bis Baubewilligung",
+          subSection: {
+            title:
+              "Kostenübersicht bis zur Baubewilligung und Baukreditfreigabe.",
+            items: [
+              "Planungskosten",
+              "Fachplanerhonorare",
+              "Visualisierungen",
+              "Baugespann",
+              "Gutachten",
+            ],
+          },
+          descriptionLines: [
+            "Wir erstellen eine detaillierte Kostenübersicht für die Planungsphase bis zur Baubewilligung.",
+          ],
+          footerNote:
+            "Diese Kostenplanung schafft Transparenz für die Bauherrschaft und bildet die Grundlage für die weitere Projektentscheidung.",
         },
         {
-          icon: Users,
-          title: "Team Sync",
-          description: "Contractor and sales team alignment",
+          label: "Projektoptimierung",
+          subSection: {
+            title: "Optimierung des Projekts gemäss Behördenrückmeldung.",
+            items: [
+              "Gebäudevolumen",
+              "Abständen",
+              "Höhen",
+              "Nutzungskonzept",
+              "Architektonischer Gestaltung",
+            ],
+          },
+          descriptionLines: [
+            "Das Projekt wird auf Grundlage der Rückmeldungen der Behörden weiterentwickelt und optimiert.",
+          ],
+          footerNote:
+            "Ziel ist es, die Anforderungen der Behörden zu erfüllen und eine erfolgreiche Baueingabe vorzubereiten.",
+        },
+        {
+          label: "Nachbarschaftsinformation",
+          subSection: {
+            title: "Information der betroffenen Nachbarschaft.",
+            items: [
+              "Transparente Kommunikation",
+              "Frühzeitige Klärung von Fragen",
+              "Vermeidung von Einsprachen",
+            ],
+          },
+          descriptionLines: [
+            "Vor der Baueingabe kann das Projekt der betroffenen Nachbarschaft vorgestellt werden.",
+          ],
+          footerNote: "",
+        },
+        {
+          label: "Baueingabe",
+          subSection: {
+            title: "Einreichung des vollständigen Baugesuchs.",
+            items: [
+              "Architekturpläne",
+              "Situationsplan",
+              "Energienachweis",
+              "Baubeschrieb",
+              "Fachplanungen",
+            ],
+          },
+          descriptionLines: [
+            "Das vollständige Baugesuch wird bei der zuständigen Baubehörde eingereicht.",
+          ],
+          footerNote:
+            "Alle erforderlichen Unterlagen werden zusammengestellt und offiziell eingereicht.",
+        },
+        {
+          label: "Baubewilligung",
+          subSection: {
+            title: "Erteilung der Baubewilligung durch die Behörden.",
+            items: [""],
+          },
+          descriptionLines: [
+            "Nach Abschluss des Bewilligungsverfahrens wird die Baubewilligung durch die zuständigen Behörden erteilt.",
+          ],
+          footerNote: "",
         },
       ],
-      subSteps: [
-        "Market-driven design",
-        "Value engineering",
-        "Unit mix optimization",
-        "Phasing strategy",
-        "Contractor engagement",
-      ],
-      clientBenefit:
-        "Designs that sell fast at premium prices, built efficiently within budget.",
     },
   },
   3: {
     private: {
       id: 3,
-      title: "Documentation & Permits",
-      color: "#06FFA5",
-      description:
-        "Technical drawings and permit applications are prepared with precision. We navigate regulations so you don't have to.",
-      why: "Complete documentation prevents construction delays and ensures legal compliance.",
-      keyDecisions: [
+      totalPhases: 3,
+      title: "Umsetzung & Realisierung",
+      descriptionLines: [
+        "In dieser Phase wird das Projekt konkret ausgearbeitet und die Baueingabe vorbereitet.Fachplaner werden eingebunden, die Kostenplanung erstellt und das Projekt gemäss Behördenanforderungen weiterentwickelt.",
+      ],
+      footerNote: "Begleitung bis zum Einzug.",
+      steps: [
         {
-          icon: Clock,
-          title: "Timeline",
-          description: "4-6 weeks plus permit approval time",
+          label: "Baukredit und\n Finanzierung",
+          subSection: {
+            title: "Freigabe der Finanzierung für das Bauprojekt.",
+            items: [""],
+          },
+          descriptionLines: [
+            "Nach Abschluss des Bewilligungsverfahrens wird die Baubewilligung durch die zuständigen Behörden erteilt.",
+          ],
+          footerNote: "",
         },
         {
-          icon: DollarSign,
-          title: "Budget",
-          description: "Permit fees and consultant coordination",
+          label: "Bauversicherungen",
+          subSection: {
+            title: "Abschluss der notwendigen Bauversicherungen.",
+            items: ["Bauherrenhaftpflicht", "Bauwesenversicherung"],
+          },
+          descriptionLines: [
+            "Vor Baubeginn werden wichtige Versicherungen abgeschlossen, um Bauherrschaft und Projekt abzusichern.",
+          ],
+          footerNote:
+            "Diese Versicherungen decken mögliche Schäden während der Bauphase ab.",
         },
         {
-          icon: Users,
-          title: "Client Input",
-          description: "Final approvals before submission",
+          label: "Projekt-Kick-Off",
+          subSection: {
+            title: "Startbesprechung mit allen Projektbeteiligten.",
+            items: [
+              "Bauherrschaft",
+              "Architekt",
+              "Fachplaner",
+              "Bauunternehmen",
+            ],
+          },
+          descriptionLines: [
+            "In einer Kick-Off-Sitzung werden sämtliche Projektbeteiligten zusammengeführt.",
+          ],
+          footerNote:
+            "Dabei werden Verantwortlichkeiten, Abläufe und Kommunikationswege definiert.",
+        },
+        {
+          label: "Ausschreibung und\n Bauvorbereitung",
+          subSection: {
+            title: "Vergabe der Bauarbeiten und Vorbereitung der Baustelle.",
+            items: ["Bauablauf", "Baustellenorganisation", "Terminplanung"],
+          },
+          descriptionLines: [
+            "Die Bauarbeiten werden ausgeschrieben und geeignete Bauunternehmen ausgewählt.",
+          ],
+          footerNote: "Damit wird der Bauablauf strukturiert vorbereitet.",
+        },
+        {
+          label: "Bauausführung",
+          subSection: {
+            title: "Realisierung des Bauprojekts.",
+            items: [
+              "Erstellung der Ausführungsplanung",
+              "Baubeginn und Rohbau",
+              "Richtfest",
+              "Kontrolle und Abnahme des Rohbaus",
+            ],
+          },
+          descriptionLines: [
+            "Nach Abschluss der Vorbereitungen beginnt die Bauphase.",
+          ],
+          footerNote:
+            "Der Baufortschritt wird laufend überwacht und koordiniert.",
+        },
+        {
+          label: "Bauabschluss und Übergabe",
+          subSection: {
+            title:
+              "Abschluss des Bauprojekts und Übergabe an die Bauherrschaft.",
+            items: [
+              "Hausbezug der Bauherrschaft",
+              "Bauabrechnung",
+              "Projektdokumentation",
+            ],
+          },
+          descriptionLines: [
+            "Nach Fertigstellung des Bauwerks erfolgt die offizielle Bauabnahme.",
+          ],
+          footerNote: "Damit wird das Projekt vollständig abgeschlossen.",
         },
       ],
-      subSteps: [
-        "Construction docs",
-        "MEP coordination",
-        "Permit application",
-        "Authority review",
-        "Permit approval",
-      ],
-      clientBenefit:
-        "Legal protection and construction clarity. Your contractor has everything needed.",
     },
     investor: {
       id: 3,
-      title: "Permit Acceleration",
-      color: "#06FFA5",
-      description:
-        "Expedited permit processing through strategic authority engagement and comprehensive documents.",
-      why: "Every week in permitting costs money in holding costs. Our systematic approach accelerates approvals.",
-      keyDecisions: [
+      totalPhases: 3,
+      title: "Realisierung und Vermarktung",
+      descriptionLines: [
+        "In dieser Phase wird das Projekt konkret ausgearbeitet und die Baueingabe vorbereitet.Fachplaner werden eingebunden, die Kostenplanung erstellt und das Projekt gemäss Behördenanforderungen weiterentwickelt.",
+      ],
+      footerNote: "Nachhaltiger Erfolg für Ihr Portfolio.",
+      steps: [
         {
-          icon: Clock,
-          title: "Expedited Track",
-          description: "3-5 weeks documentation + priority",
+          label: "Baukredit und\n Finanzierung",
+          subSection: {
+            title: "Freigabe der Finanzierung für das Bauprojekt.",
+            items: [""],
+          },
+          descriptionLines: [
+            "Nach Abschluss des Bewilligungsverfahrens wird die Baubewilligung durch die zuständigen Behörden erteilt.",
+          ],
+          footerNote: "",
         },
         {
-          icon: DollarSign,
-          title: "Cost Impact",
-          description: "Reduced holding costs vs. time value",
+          label: "Bauversicherungen",
+          subSection: {
+            title: "Abschluss der notwendigen Bauversicherungen.",
+            items: ["Bauherrenhaftpflicht", "Bauwesenversicherung"],
+          },
+          descriptionLines: [
+            "Vor Baubeginn werden wichtige Versicherungen abgeschlossen, um Bauherrschaft und Projekt abzusichern.",
+          ],
+          footerNote:
+            "Diese Versicherungen decken mögliche Schäden während der Bauphase ab.",
         },
         {
-          icon: Users,
-          title: "Coordination",
-          description: "Plan check and expediter management",
+          label: "Projekt-Kick-Off",
+          subSection: {
+            title: "Startbesprechung mit allen Projektbeteiligten.",
+            items: [
+              "Bauherrschaft",
+              "Architekt",
+              "Fachplaner",
+              "Bauunternehmen",
+            ],
+          },
+          descriptionLines: [
+            "In einer Kick-Off-Sitzung werden sämtliche Projektbeteiligten zusammengeführt.",
+          ],
+          footerNote:
+            "Dabei werden Verantwortlichkeiten, Abläufe und Kommunikationswege definiert.",
+        },
+        {
+          label: "Ausschreibung und \nBauvorbereitung",
+          subSection: {
+            title: "Vergabe der Bauarbeiten und Vorbereitung der Baustelle.",
+            items: ["Bauablauf", "Baustellenorganisation", "Terminplanung"],
+          },
+          descriptionLines: [
+            "Die Bauarbeiten werden ausgeschrieben und geeignete Bauunternehmen ausgewählt.",
+          ],
+          footerNote: "Damit wird der Bauablauf strukturiert vorbereitet.",
+        },
+        {
+          label: "Bauausführung",
+          subSection: {
+            title: "Realisierung des Bauprojekts.",
+            items: [
+              "Erstellung der Ausführungsplanung",
+              "Baubeginn und Rohbau",
+              "Richtfest",
+              "Kontrolle und Abnahme des Rohbaus",
+            ],
+          },
+          descriptionLines: [
+            "Nach Abschluss der Vorbereitungen beginnt die Bauphase.",
+          ],
+          footerNote:
+            "Der Baufortschritt wird laufend überwacht und koordiniert.",
+        },
+        {
+          label: "Bauabschluss und \nÜbergabe",
+          subSection: {
+            title:
+              "Abschluss des Bauprojekts und Übergabe an die Bauherrschaft.",
+            items: [
+              "Hausbezug der Bauherrschaft",
+              "Bauabrechnung",
+              "Projektdokumentation",
+            ],
+          },
+          descriptionLines: [
+            "Nach Fertigstellung des Bauwerks erfolgt die offizielle Bauabnahme.",
+          ],
+          footerNote: "Damit wird das Projekt vollständig abgeschlossen.",
         },
       ],
-      subSteps: [
-        "Comprehensive docs",
-        "Clash detection",
-        "Expedited strategy",
-        "Parallel processing",
-        "Lender packages",
-      ],
-      clientBenefit:
-        "Faster permits = lower holding costs and earlier revenue.",
-    },
-  },
-  4: {
-    private: {
-      id: 4,
-      title: "Execution & Delivery",
-      color: "#A78BFA",
-      description:
-        "We oversee construction to ensure design intent is realized. Quality control keeps the project on track.",
-      why: "Design vision must translate to built reality. Active oversight prevents expensive mistakes.",
-      keyDecisions: [
-        {
-          icon: Clock,
-          title: "Timeline",
-          description: "Duration varies by project scope",
-        },
-        {
-          icon: DollarSign,
-          title: "Budget",
-          description: "Change order review and cost control",
-        },
-        {
-          icon: Users,
-          title: "Client Input",
-          description: "Regular site meetings and updates",
-        },
-      ],
-      subSteps: [
-        "Contractor selection",
-        "Construction admin",
-        "Site visits",
-        "Problem solving",
-        "Final walkthrough",
-      ],
-      clientBenefit:
-        "Peace of mind. Your architect ensures the vision becomes reality, exactly as designed.",
-    },
-    investor: {
-      id: 4,
-      title: "Construction Mgmt",
-      color: "#A78BFA",
-      description:
-        "Schedule-driven construction oversight protecting quality while maximizing efficiency.",
-      why: "Construction delays directly impact returns. Our proactive oversight identifies issues early.",
-      keyDecisions: [
-        {
-          icon: Clock,
-          title: "Schedule Control",
-          description: "Critical path monitoring and tracking",
-        },
-        {
-          icon: DollarSign,
-          title: "Budget Protection",
-          description: "Contingency management and tracking",
-        },
-        {
-          icon: Users,
-          title: "Coordination",
-          description: "Weekly OAC meetings and management",
-        },
-      ],
-      subSteps: [
-        "Pre-construction",
-        "Fast-track coordination",
-        "Progress monitoring",
-        "Quality control",
-        "Punch list mgmt",
-      ],
-      clientBenefit:
-        "On-time, on-budget delivery maximizes ROI. Reduced financing costs.",
     },
   },
 };
 
-// --- StepTimer Component ---
-
-function StepTimer({ steps, color }: { steps: string[]; color: string }) {
-  const [activeStep, setActiveStep] = React.useState(-1);
-
-  React.useEffect(() => {
-    // Reset when steps/color change (e.g. switching clientType)
-    setActiveStep(-1);
-
-    const timers: ReturnType<typeof setTimeout>[] = [];
-
-    steps.forEach((_, idx) => {
-      timers.push(
-        setTimeout(
-          () => {
-            setActiveStep(idx);
-          },
-          600 + idx * 800,
-        ),
-      );
-    });
-
-    return () => timers.forEach(clearTimeout);
-  }, [steps, color]);
-
-  // Progress line width: tracks from first circle center to active circle center
-  const progressPercent =
-    activeStep < 0
-      ? 0
-      : activeStep >= steps.length - 1
-        ? 100
-        : (activeStep / (steps.length - 1)) * 100;
-
-  return (
-    <div className="mb-12">
-      <div className="flex items-center gap-3 mb-8">
-        <div className="w-6 h-[1px]" style={{ backgroundColor: color }} />
-        <h3 className="text-lg font-medium text-gray-200">
-          Kernschritte dieser Phase
-        </h3>
-      </div>
-
-      {/* Desktop: Horizontal Stepper / Mobile: Vertical List */}
-      <div className="relative">
-        {/* Background Line (Desktop) */}
-        <div className="hidden md:block absolute top-[15px] left-0 right-0 h-[1px] bg-white/10 -z-10" />
-
-        {/* Animated Progress Line */}
-        <div
-          className="hidden md:block absolute top-[15px] left-0 h-[1px] -z-10"
-          style={{
-            backgroundColor: color,
-            width: `${progressPercent}%`,
-            transition: "width 0.6s ease",
-          }}
-        />
-
-        <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-4">
-          {steps.map((step, idx) => {
-            const isActive = idx <= activeStep;
-            const isCurrent = idx === activeStep;
-
-            return (
-              <div
-                key={idx}
-                className="flex md:flex-col items-center gap-4 md:gap-0 md:text-center flex-1"
-              >
-                {/* Circle Indicator */}
-                <div
-                  className="w-8 h-8 rounded-full border bg-[#09090b] flex items-center justify-center text-xs font-medium z-10 shrink-0"
-                  style={{
-                    borderColor: isActive ? color : "rgba(255,255,255,0.2)",
-                    color: isActive ? color : "gray",
-                    transform: isCurrent ? "scale(1.25)" : "scale(1)",
-                    boxShadow: isCurrent ? `0 0 12px ${color}80` : "none",
-                    transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
-                  }}
-                >
-                  {idx + 1}
-                </div>
-
-                {/* Text */}
-                <span
-                  className="text-sm md:mt-4"
-                  style={{
-                    color: isActive ? "#e5e7eb" : "#9ca3af",
-                    transition: "color 0.4s ease",
-                  }}
-                >
-                  {step}
-                </span>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// --- Component ---
-
+// --- PhaseDetailPanel ---
 export function PhaseDetailPanel({
   phase,
   onClose,
   clientType,
 }: PhaseDetailPanelProps) {
-  // Always render the hook, but conditionally use data
-  const phaseDetail = phase ? phaseData[phase.id][clientType] : null;
+  const [activeStep, setActiveStep] = React.useState<number>(0);
+  const stepperRef = React.useRef<HTMLDivElement>(null);
+  const stepRefs = React.useRef<(HTMLButtonElement | null)[]>([]);
+
+  const detail = phase ? phaseData[phase.id][clientType] : null;
+  const themeColor = phase?.color;
+
+  const currentStepData = detail ? detail.steps[activeStep]?.subSection : null;
+  const currentStepDescLines = detail
+    ? detail.steps[activeStep]?.descriptionLines
+    : null;
+  const currentStepFooter = detail
+    ? detail.steps[activeStep]?.footerNote
+    : null;
+
+  // Reset active step when phase changes
+  React.useEffect(() => {
+    if (phase) setActiveStep(0);
+  }, [phase?.id]);
+
+  // Auto-scroll stepper horizontally when active step changes
+  React.useEffect(() => {
+    const btn = stepRefs.current[activeStep];
+    if (btn && stepperRef.current) {
+      btn.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  }, [activeStep]);
+
+  // Lock body scroll when panel is open
+  React.useEffect(() => {
+    if (phase && detail) {
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }
+  }, [phase, detail]);
 
   return (
     <AnimatePresence>
-      {phase && phaseDetail && (
+      {phase && detail && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-end md:items-center justify-center p-0 md:p-6"
+          className="fixed inset-0 z-[99999] flex items-end md:items-center justify-center p-0 md:p-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           {/* Backdrop */}
           <motion.div
-            className="absolute inset-0 bg-black "
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
             onClick={onClose}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
           />
 
           {/* Main Card */}
           <motion.div
-            layoutId={`phase-card-${phase.id}`}
-            className="relative w-full max-w-5xl bg-black rounded-t-2xl md:rounded-2xl overflow-hidden shadow-2xl flex flex-col h-[85vh] md:max-h-[80vh]"
-            style={{ border: `2px solid ${phaseDetail.color}` }}
-            initial={{ scale: 0.95, opacity: 0, y: 20 }}
+            className="relative w-full max-w-4xl bg-black rounded-t-2xl md:rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+            style={{
+              maxHeight: "90vh",
+              border: "1px solid rgba(255,255,255,0.1)",
+            }}
+            initial={{ scale: 0.97, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.95, opacity: 0, y: 20 }}
+            exit={{ scale: 0.97, opacity: 0, y: 20 }}
             transition={{ type: "spring", bounce: 0, duration: 0.4 }}
           >
-            {/* Fixed Close Button */}
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 md:top-6 md:right-6 z-50 p-2 rounded-full bg-black/50 hover:bg-white/10 transition-colors text-gray-400 hover:text-white backdrop-blur-sm border border-white/10"
-            >
-              <X className="w-6 h-6" />
-            </button>
-
             {/* Scrollable Content */}
-            <div className="overflow-y-auto flex-1 p-6 md:p-12 no-scrollbar relative">
-              {/* 1. Header Section */}
-              <div className="flex justify-between items-start mb-12">
-                <div className="flex gap-4 md:gap-6 pr-8 md:pr-16">
+            <div className="overflow-y-auto flex-1 no-scrollbar">
+              {/* Header */}
+              <div className="px-8 pt-8 pb-6">
+                <div className="flex items-start gap-5">
                   {/* Number Box */}
                   <div
-                    className="w-16 h-16 md:w-20 md:h-20 rounded-lg flex items-center justify-center border text-3xl md:text-4xl font-light"
+                    className="w-12 h-12 rounded-md flex items-center justify-center text-xl font-medium shrink-0 mt-1"
                     style={{
-                      borderColor: phaseDetail.color,
-                      color: phaseDetail.color,
-                      backgroundColor: `${phaseDetail.color}10`,
+                      backgroundColor: `${themeColor}26`, // ~15% opacity
+                      border: `1px solid ${themeColor}66`, // ~40% opacity
+                      color: themeColor,
                     }}
                   >
-                    {phaseDetail.id}
+                    {detail.id}
                   </div>
 
-                  {/* Title & Subtitle */}
-                  <div className="flex flex-col justify-center">
-                    <h2 className="text-2xl md:text-4xl text-white font-light tracking-tight mb-2">
-                      {phaseDetail.title}
+                  {/* Title */}
+                  <div>
+                    <h2 className="text-xl font-semibold text-white leading-tight">
+                      {detail.title}
                     </h2>
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 mt-1">
                       <div
-                        className="w-8 h-[1px]"
-                        style={{ backgroundColor: phaseDetail.color }}
+                        className="w-6 h-px"
+                        style={{ backgroundColor: `${themeColor}99` }} // ~60% opacity
                       />
-                      <span className="text-xs md:text-sm uppercase tracking-widest text-gray-500 font-medium">
-                        Phase {phaseDetail.id} von 4
+                      <span className="text-xs uppercase tracking-widest text-gray-500 font-medium">
+                        Phase {detail.id} von {detail.totalPhases}
                       </span>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Description */}
-              <p className="text-gray-400 text-lg leading-relaxed max-w-3xl mb-12">
-                {phaseDetail.description}
-              </p>
+                {/* Description */}
+                <div className="mt-6 text-sm text-gray-400 leading-relaxed space-y-1 max-w-2xl">
+                  {detail.descriptionLines.map((line, i) =>
+                    line === "" ? (
+                      <div key={i} className="h-2" />
+                    ) : (
+                      <p key={i}>{line}</p>
+                    ),
+                  )}
+                </div>
+              </div>
 
               {/* Divider */}
-              <div
-                className="w-full h-[1px] "
-                style={{ backgroundColor: phaseDetail.color }}
-              />
+              <div className="w-full h-px bg-white/10" />
 
-              {/* 2. "Why this phase matters" */}
-              <div className="mb-12 pt-10">
-                <div className="flex items-center gap-3 mb-4">
+              {/* Stepper Section */}
+              <div className="px-8 py-7">
+                <div className="flex items-center gap-2 mb-6">
                   <div
-                    className="w-6 h-[1px]"
-                    style={{ backgroundColor: phaseDetail.color }}
+                    className="w-6 h-px"
+                    style={{ backgroundColor: `${themeColor}99` }} // ~60% opacity
                   />
-                  <h3 className="text-lg font-medium text-gray-200">
-                    Warum diese Phase wichtig ist
-                  </h3>
+                  <span className="text-sm font-medium text-gray-300">
+                    Kernschritte dieser Phase
+                  </span>
                 </div>
-                <p className="text-gray-400 leading-relaxed max-w-4xl pl-9">
-                  {phaseDetail.why}
-                </p>
+
+                {/* Horizontal Stepper */}
+                <div
+                  ref={stepperRef}
+                  className="relative overflow-x-auto no-scrollbar pb-2"
+                >
+                  <div className="flex items-start gap-2 min-w-max">
+                    {detail.steps.map((step, idx) => {
+                      const isActive = idx === activeStep;
+                      const isDone = idx < activeStep;
+
+                      return (
+                        <Fragment key={idx}>
+                          {/* Step Button */}
+                          <button
+                            ref={(el) => {
+                              stepRefs.current[idx] = el;
+                            }}
+                            onClick={() => setActiveStep(idx)}
+                            className="flex flex-col items-center gap-2 group shrink-0"
+                          >
+                            {/* Circle */}
+                            <div
+                              className="w-8 h-8 rounded-full border flex items-center justify-center text-xs font-medium z-10 transition-all duration-300"
+                              style={{
+                                borderColor: isActive
+                                  ? themeColor
+                                  : isDone
+                                    ? `${themeColor}66`
+                                    : "rgba(255,255,255,0.15)",
+                                color: isActive
+                                  ? themeColor
+                                  : isDone
+                                    ? `${themeColor}B3`
+                                    : "#6b7280",
+                                backgroundColor: isActive
+                                  ? `${themeColor}1A`
+                                  : "#09090b",
+                                boxShadow: isActive
+                                  ? `0 0 10px ${themeColor}66`
+                                  : "none",
+                              }}
+                            >
+                              {isDone ? (
+                                <svg
+                                  className="w-3.5 h-3.5"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                  strokeWidth={2.5}
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M5 13l4 4L19 7"
+                                  />
+                                </svg>
+                              ) : (
+                                idx + 1
+                              )}
+                            </div>
+
+                            {/* Label */}
+                            <span
+                              className="text-[10px] text-center leading-tight hidden md:block transition-colors duration-200"
+                              style={{
+                                color: isActive
+                                  ? "#e5e7eb"
+                                  : isDone
+                                    ? "#9ca3af"
+                                    : "#6b7280",
+                                whiteSpace: "pre-line",
+                              }}
+                            >
+                              {step.label}
+                            </span>
+                          </button>
+
+                          {/* 3 Dots Connector (between steps) */}
+                          {idx < detail.steps.length - 1 && (
+                            <div className="hidden md:flex items-center justify-center gap-1 flex-1 pb-6 mt-3">
+                              {[0, 1, 2].map((dotIdx) => (
+                                <div
+                                  key={dotIdx}
+                                  className="rounded-full transition-all duration-500"
+                                  style={{
+                                    width: "4px",
+                                    height: "4px",
+                                    transitionDelay: `${dotIdx * 60}ms`,
+                                    backgroundColor: isDone
+                                      ? `${themeColor}99`
+                                      : isActive && dotIdx === 0
+                                        ? `${themeColor}66`
+                                        : "rgba(255,255,255,0.15)",
+                                    boxShadow: isDone
+                                      ? `0 0 4px ${themeColor}55`
+                                      : "none",
+                                  }}
+                                />
+                              ))}
+                            </div>
+                          )}
+                        </Fragment>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
 
-              {/* 3. Key Decisions (Grid) */}
-              <div className="mb-12">
-                <div className="flex items-center gap-3 mb-6">
-                  <div
-                    className="w-6 h-[1px]"
-                    style={{ backgroundColor: phaseDetail.color }}
-                  />
-                  <h3 className="text-lg font-medium text-gray-200">
-                    Wichtige Entscheidungen
-                  </h3>
-                </div>
+              {/* Divider */}
+              <div className="w-full h-px bg-white/10" />
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {phaseDetail.keyDecisions.map((decision, idx) => {
-                    const Icon = decision.icon;
-                    return (
-                      <div
+              {/* Sub-section Content */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeStep}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.25 }}
+                  className="px-8 py-7"
+                >
+                  {/* Sub-section title */}
+                  <div className="flex items-center gap-2 mb-5">
+                    <div
+                      className="w-6 h-px"
+                      style={{ backgroundColor: `${themeColor}99` }} // ~60% opacity
+                    />
+                    <span className="text-sm font-medium text-gray-300">
+                      {currentStepData?.title}
+                    </span>
+                  </div>
+
+                  {currentStepDescLines && (
+                    <div className="text-sm text-gray-400 mb-5 max-w-xl space-y-1">
+                      {currentStepDescLines.map((line, i) => (
+                        <p key={i}>{line}</p>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Bullet Items */}
+                  <div className="flex flex-col gap-3">
+                    {currentStepData?.items.map((item, idx) => (
+                      <motion.div
                         key={idx}
-                        className="border border-white/80 rounded-sm p-6 hover:border-white/20 transition-colors "
+                        className="flex items-stretch gap-4"
+                        initial={{ opacity: 0, x: -8 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: idx * 0.07, duration: 0.25 }}
                       >
+                        {/* Left dot + line */}
+                        <div className="flex flex-col items-center">
+                          <div
+                            className="w-2.5 h-2.5 rounded-full mt-4 shrink-0"
+                            style={{ backgroundColor: themeColor }}
+                          />
+                          {idx < (currentStepData?.items.length ?? 0) - 1 && (
+                            <div
+                              className="w-px flex-1 mt-1"
+                              style={{ backgroundColor: `${themeColor}33` }} // ~20% opacity
+                            />
+                          )}
+                        </div>
+
+                        {/* Card */}
                         <div
-                          className="w-10 h-10 rounded-xs flex bg-white/15 items-center justify-center mb-4 text-white"
+                          className="flex-1 rounded-md px-5 py-4 mb-1"
                           style={{
-                            color: phaseDetail.color,
+                            border: "1px solid rgba(255,255,255,0.07)",
+                            backgroundColor: "rgba(255,255,255,0.02)",
                           }}
                         >
-                          <Icon className="w-5 h-5" />
+                          <span className="text-sm text-gray-300">{item}</span>
                         </div>
-                        <h4 className="text-white font-medium mb-2">
-                          {decision.title}
-                        </h4>
-                        <p className="text-sm text-gray-400 leading-relaxed">
-                          {decision.description}
-                        </p>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
 
-              {/* 4. Core Steps (Timeline/Stepper look) */}
-              <StepTimer
-                steps={phaseDetail.subSteps}
-                color={phaseDetail.color}
-              />
-
-              <div
-                className="border rounded-xl p-6 md:p-8"
-                style={{ borderColor: "rgba(255,255,255,0.15)" }}
-              >
-                <div className="flex flex-col gap-3">
-                  <h3 className="text-lg font-medium text-white mb-1">
-                    Ihr Vorteil
-                  </h3>
-                  <p className="text-gray-400 text-lg leading-relaxed">
-                    {phaseDetail.clientBenefit}
+              {/* Footer Note */}
+              {currentStepFooter && (
+                <div className="px-8 pb-8">
+                  <p className="text-xs text-gray-600 italic">
+                    {currentStepFooter}
                   </p>
                 </div>
-              </div>
-
-              {/* Bottom Spacer for Scroll Hint */}
-              <div className="h-24" />
+              )}
             </div>
 
-            {/* Fixed Scroll Hint Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-40">
-              {/* Gradient Fade */}
-              <div className="h-32 bg-gradient-to-t from-black via-black/80 to-transparent w-full" />
-
-              {/* Animated Content */}
-              <motion.div
-                className="absolute bottom-6 left-0 right-0 flex flex-col items-center gap-2"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.8 }}
-              >
-                <motion.div
-                  animate={{ y: [0, 6, 0] }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="flex flex-col items-center gap-1"
-                >
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-medium">
-                    Mehr Details
-                  </span>
-                  <ChevronRight className="w-4 h-4 text-gray-400 rotate-90" />
-                </motion.div>
-              </motion.div>
-            </div>
+            {/* Close Button (moved here and z-index boosted) */}
+            <button
+              onClick={onClose}
+              className="absolute top-5 right-5 z-[100] p-2 rounded-full hover:bg-white/10 transition-colors text-gray-400 hover:text-white"
+            >
+              <X className="w-6 h-6" />
+            </button>
           </motion.div>
         </motion.div>
       )}

@@ -12,16 +12,16 @@ export function MethodologyHero({
 }: MethodologyHeroProps) {
   return (
     <div className="bg-transparent">
-      <div className="relative  z-10 max-w-6xl mx-auto px-6 pt-50 pb-32 text-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-32 md:pt-50 pb-20 md:pb-32 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <h1 className="text-3xl md:text-[70px] font-light tracking-tight text-white mb-20 leading-none">
-            Projekte, die planbar bleiben <br />
-            <span className="font-normal bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent">
-              von der Analyse bis zur Übergabe
+          <h1 className="text-4xl sm:text-5xl md:text-[70px] font-light tracking-tight text-white mb-10 md:mb-20 leading-tight md:leading-none">
+            Projekte, die planbar bleiben
+            <span className="block md:inline">
+              {" "} von <br className="hidden md:block" /> der Analyse bis zur Übergabe
             </span>
           </h1>
 
@@ -30,43 +30,28 @@ export function MethodologyHero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
+            className="flex flex-col sm:flex-row justify-center items-center gap-4 px-4 sm:px-0"
           >
-            <div className="inline-flex gap-3 p-2 bg-white/5  backdrop-blur-sm border border-white/10 relative">
-              {/* Animated background slider */}
-              <motion.div
-                className="absolute top-2 h-[calc(100%-16px)]  bg-white"
-                initial={false}
-                animate={{
-                  left: clientType === "private" ? "8px" : "calc(50% + 4px)",
-                  width:
-                    clientType === "private"
-                      ? "calc(50% - 12px)"
-                      : "calc(50% - 12px)",
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              />
-
-              <button
-                onClick={() => onClientTypeChange("private")}
-                className={`relative px-10 py-4 uppercase text-sm font-medium transition-all duration-300 ${
-                  clientType === "private"
-                    ? "text-black"
-                    : "text-gray-400 hover:text-white"
-                }`}
-              >
-                Private Kunden
-              </button>
-              <button
-                onClick={() => onClientTypeChange("investor")}
-                className={`relative px-10 py-4 uppercase text-sm font-medium transition-all duration-300 ${
-                  clientType === "investor"
-                    ? "text-black"
-                    : "text-gray-400 hover:text-white"
-                }`}
-              >
-                GESCHÄFTE / INVESTOREN
-              </button>
-            </div>
+            <button
+              onClick={() => onClientTypeChange("private")}
+              className={`w-full sm:w-auto px-8 md:px-12 py-4 uppercase text-xs md:text-sm rounded-full font-medium border transition-all duration-200 tracking-widest ${
+                clientType === "private"
+                  ? "bg-white text-black border-white"
+                  : "bg-black text-white border-white/20 hover:border-white/40"
+              }`}
+            >
+              Private Kunden
+            </button>
+            <button
+              onClick={() => onClientTypeChange("investor")}
+              className={`w-full sm:w-auto px-8 md:px-12 py-4 uppercase text-xs md:text-sm rounded-full font-medium border transition-all duration-200 tracking-widest ${
+                clientType === "investor"
+                  ? "bg-white text-black border-white"
+                  : "bg-black text-white border-white/20 hover:border-white/40"
+              }`}
+            >
+              Projektentwickler
+            </button>
           </motion.div>
 
           {/* Scroll indicator */}
@@ -74,7 +59,7 @@ export function MethodologyHero({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 1 }}
-            className="mt-20"
+            className="mt-16 md:mt-20"
           >
             <motion.div
               animate={{ y: [0, 10, 0] }}

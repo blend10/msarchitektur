@@ -57,7 +57,6 @@ const Projektierung = () => {
               isAnimating ? "opacity-50" : "opacity-100"
             }`}
             priority
-            quality={100}
             sizes="(max-width: 768px) 100vw, 80vw"
           />
 

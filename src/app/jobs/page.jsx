@@ -5,31 +5,31 @@ import Gestalten from "@/components/home/Gestalten";
 
 const jobs = [
   {
-    title: "ARCHITEKT:IN",
+    title: "ARCHITEKT",
     description:
       "Entwurf und Entwicklung von Architekturprojekten von der Konzeptphase bis zur Ausführung mit hohem gestalterischem und technischem Anspruch.",
     tags: ["VOLLZEIT", "FERNARBEIT"],
     href: "/",
   },
   {
-    title: "JUNIOR ARCHITEKT:IN",
+    title: "ARCHITEKT",
     description:
       "Mitarbeit bei Entwurf, Planung und Visualisierung in allen Projektphasen.",
-    tags: ["VOLLZEIT", "FERNARBEIT"],
-    href: "/",
-  },
-  {
-    title: "PROJEKTLEITER:IN ARCHITEKTUR",
-    description:
-      "Verantwortung für Termine, Kosten und Qualität in enger Zusammenarbeit mit Bauherrschaften, Behörden und Planungsteams.",
     tags: ["VOLLZEIT", "BÜRO"],
     href: "/",
   },
   {
-    title: "PRAKTIKANT:IN ARCHITEKTUR",
+    title: "ARCHITEKT",
+    description:
+      "Verantwortung für Termine, Kosten und Qualität in enger Zusammenarbeit mit Bauherrschaften, Behörden und Planungsteams.",
+    tags: ["Teilzeit"],
+    href: "/",
+  },
+  {
+    title: "Zeichner",
     description:
       "Unterstützung des Teams bei Entwurf, Planung und Visualisierung sowie Einblick in alle Projektphasen.",
-    tags: ["PRAKTIKUM", "BÜRO"],
+    tags: ["VOLLZEIT", "BÜRO"],
     href: "/",
   },
 ];
@@ -40,7 +40,7 @@ const Page = () => {
       {/* Hero Section */}
       <div className="relative w-full h-[840px] bg-black">
         <Image
-          src="/images/kontaktPhoto.jpg"
+          src="/images/jobsPhoto.png"
           alt="Contact Hero"
           fill
           className="object-cover"
@@ -78,7 +78,7 @@ const Page = () => {
                   ))}
                 </div>
 
-                <Link
+                {/* <Link
                   href={job.href}
                   className="group/link flex items-center gap-2 text-xs font-medium tracking-widest text-[#111111] uppercase hover:opacity-60 transition-opacity"
                 >
@@ -99,7 +99,7 @@ const Page = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                </Link>
+                </Link> */}
               </div>
             </div>
           ))}

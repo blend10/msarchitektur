@@ -78,6 +78,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [isDark, setIsDark] = useState(false); // true when bg behind header is dark
   const headerRef = useRef(null);
+  const rafRef = useRef(null);
 
   const detectBackground = useCallback(() => {
     if (!headerRef.current) return;
@@ -117,12 +118,21 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    detectBackground(); // initial check
-    window.addEventListener("scroll", detectBackground, { passive: true });
-    window.addEventListener("resize", detectBackground, { passive: true });
+    const throttledDetect = () => {
+      if (rafRef.current) return; // already scheduled
+      rafRef.current = requestAnimationFrame(() => {
+        detectBackground();
+        rafRef.current = null;
+      });
+    };
+
+    throttledDetect(); // initial check
+    window.addEventListener("scroll", throttledDetect, { passive: true });
+    window.addEventListener("resize", throttledDetect, { passive: true });
     return () => {
-      window.removeEventListener("scroll", detectBackground);
-      window.removeEventListener("resize", detectBackground);
+      window.removeEventListener("scroll", throttledDetect);
+      window.removeEventListener("resize", throttledDetect);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, [detectBackground]);
 

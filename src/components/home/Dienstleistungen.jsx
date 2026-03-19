@@ -9,25 +9,34 @@ const ScrollRevealText = ({ text, className = "" }) => {
   const lines = text.split("\n");
 
   useEffect(() => {
+    let rafId = null;
+
     const handleScroll = () => {
-      if (!containerRef.current) return;
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        if (!containerRef.current) { rafId = null; return; }
 
-      const { top } = containerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
+        const { top } = containerRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
 
-      const start = windowHeight * 0.9;
-      const end = windowHeight * 0.4;
+        const start = windowHeight * 0.9;
+        const end = windowHeight * 0.4;
 
-      let p = (start - top) / (start - end);
-      if (p < 0) p = 0;
-      if (p > 1) p = 1;
+        let p = (start - top) / (start - end);
+        if (p < 0) p = 0;
+        if (p > 1) p = 1;
 
-      setProgress(p);
+        setProgress(p);
+        rafId = null;
+      });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   // Calculate total characters for smooth per-character reveal
@@ -71,13 +80,13 @@ const ScrollRevealText = ({ text, className = "" }) => {
 
 const ServiceItem = ({ number, title, text }) => (
   <div className="flex flex-col items-start justify-start gap-4 h-full">
-    <h2 className="text-[#FFFFFF] font-light text-xl md:text-[24px] opacity-50">
+    <h2 className="text-[#FFFFFF] font-light text-xl md:text-[24px]">
       {number}
     </h2>
     <h3 className="text-[#FFFFFF] font-light text-2xl md:text-[28px] mb-2">
       {title}
     </h3>
-    <p className="text-[#FCFCFCB2] font-light leading-relaxed text-sm md:text-base">
+    <p className="text-[#FCFCFCB2] font-light leading-relaxed text-sm md:text-base whitespace-pre-line">
       {text}
     </p>
   </div>
@@ -104,31 +113,31 @@ const Dienstleistungen = () => {
           <ServiceItem
             number="#01"
             title="Vorprojektierung"
-            text="In der Vorprojektierung entwerfen wir das Projekt. Der Bauherrschaft werden verschiedene Entwürfe anhand von Skizzen und Visualisierungen vorgelegt. Wenn klar ist, welche Variante angegangen werden soll, so wird diese auf die erlaubten Möglichkeiten, anhand des Baureglements der betroffenen Gemeinde optimiert."
+            text={`In der Vorprojektierungsphase wird das Projekt konzeptionell entwickelt. Auf Basis der Anforderungen der Bauherrschaft werden unterschiedliche Varianten mittels Skizzen und Visualisierungen erarbeitet und gegenübergestellt.\n\n `}
           />
 
           <ServiceItem
             number="#02"
             title="Projektierung"
-            text="In der Projektierung wird das Entwurfskonzept in ein CAD-basiertes 3D-Modell überführt, wodurch eine präzise Planung und die Minimierung von Fehlern gewährleistet wird. Diese Phase umfasst zudem die Baukostenermittlung, die Terminplanung sowie das gesamte Baubewilligungsverfahren."
+            text={`In der Projektierungsphase wird das gewählte Entwurfskonzept in ein präzises CAD-basiertes 3D-Modell überführt. Dadurch entsteht eine fundierte Planungsgrundlage für sämtliche weiteren Projektphasen.\n\n  `}
           />
 
           <ServiceItem
             number="#03"
             title="Submission"
-            text="Die Submission beginnt nach Einreichung der Baueingabe. Während der behördlichen Prüfung wird die Ausführungsplanung vorbereitet, Offerten eingeholt, Vergabegespräche geführt und Aufträge vergeben, um nach Erhalt der Baubewilligung direkt starten zu können."
+            text={`Nach Einreichung des Baugesuchs beginnt die Submission der Bauleistungen. Parallel zur behördlichen Prüfung werden die Ausführungsplanungen weiter vertieft.\n\n `}
           />
 
           <ServiceItem
             number="#04"
             title="Ausführung"
-            text="Nun werden die definitiven Ausführungspläne erstellt. Sämtliche Pläne werden an die Bauunternehmen versandt und der Bau beginnt. Sämtliche Unternehmer werden durch die Bauleitung, welche wir ebenfalls übernehmen, geleitet und koordiniert."
+            text={`In der Ausführungsphase werden sämtliche Detail- und Ausführungspläne erstellt und den beauftragten Bauunternehmen zur Verfügung gestellt.\n\n `}
           />
 
           <ServiceItem
             number="#05"
-            title="Kostenkontrolle"
-            text="Während der gesamten Bauphase überwachen wir laufend die Kosten und den Baufortschritt. Nach Abschluss der Arbeiten begleiten wir die Abnahme, koordinieren die Übergabe und stellen sicher, dass das Projekt termingerecht und in hoher Qualität abgeschlossen wird."
+            title="Projektmanagement"
+            text={`Das Projektmanagement übernimmt die übergeordnete Steuerung und Koordination aller Projektbeteiligten. Prozesse von Planung und Ausschreibung bis zur Realisierung werden strukturiert geführt und überwacht.`}
           />
         </div>
       </div>

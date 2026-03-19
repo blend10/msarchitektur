@@ -10,23 +10,23 @@ const Projects = () => {
   const projectsData = [
     {
       id: 1,
-      src: "/images/home3.png",
+      src: "/images/Vista11.png",
       title: "Vista",
       description:
-        "Umbau / Sanierung, Mehrfamilienhaus mit Gewerbeanteil, Kloten",
+        "Erweiterung und Sanierung Hangvilla mit Attikawohnung und Anbau",
     },
     {
       id: 2,
       src: "/images/halden1.jpg",
       title: "Halden",
-      description: "Neubau Mehrfamilienhaus mit 4 Wohnungen",
+      description:
+        "Neubau 2 Doppeleinfamilienhäuser (4 Einheiten) mit Waldblick",
     },
     {
       id: 3,
       src: "/images/casavista1.jpg",
       title: "Casa Five",
-      description:
-        "Umbau / Sanierung, Mehrfamilienhaus mit Gewerbeanteil, Kloten",
+      description: "Neubau 5 Einfamilienhäuser",
     },
     {
       id: 4,
@@ -39,40 +39,82 @@ const Projects = () => {
       id: 5,
       src: "/images/rundi1.jpg",
       title: "Rundi",
-      description: "Neubau Mehrfamilienhaus mit 4 Wohnungen",
+      description: "Umbau und Sanierung Einfamilienhaus mit Seeblick",
     },
 
     {
       id: 6,
       src: "/images/freva.png",
       title: "Freva",
-      description:
-        "Umbau / Sanierung, Mehrfamilienhaus mit Gewerbeanteil, Kloten",
+      description: "Neubau Doppeleinfamilienhaus",
     },
 
     {
       id: 7,
       src: "/images/perl.png",
       title: "Perl",
-      description:
-        "Umbau / Sanierung, Mehrfamilienhaus mit Gewerbeanteil, Kloten",
+      description: "Umbau und Sanierung klassische",
     },
 
     {
       id: 8,
       src: "/images/riet.png",
       title: "Riet",
-      description: "Neubau Mehrfamilienhaus mit 4 Wohnungen",
+      description: "Umbau und Sanierung Einfamilienhaus",
     },
 
     {
       id: 9,
       src: "/images/yakin.jpg",
       title: "Yakin Arena",
-      description: "Neubau Mehrfamilienhaus mit 4 Wohnungen",
+      description: "Erweiterung",
+    },
+    {
+      id: 10,
+      src: "/images/panorama1.png",
+      title: "Panorama",
+      // description: "Neubau Mehrfamilienhaus mit 4 Wohnungen",
     },
 
     {
+      id: 11,
+      src: "/images/startPage.jpg",
+      title: "Unterfeld",
+      // description: "Neubau Mehrfamilienhaus mit 4 Wohnungen",
+    },
+    {
+      id: 12,
+      src: "/images/bollacker.jpg",
+      title: "Bollacker",
+      // description: "Neubau Mehrfamilienhaus mit 4 Wohnungen",
+    },
+    {
+      id: 13,
+      src: "/images/avera.jpg",
+      title: "Avera",
+      // description: "Neubau Mehrfamilienhaus mit 4 Wohnungen",
+    },
+
+    // {
+    //   id: 14,
+    //   src: "/images/noImage.png",
+    //   title: "Sandacker",
+    //   description: "Neubau Mehrfamilienhaus mit 4 Wohnungen",
+    // },
+    // {
+    //   id: 15,
+    //   src: "/images/noImage.png",
+    //   title: "Neumatt",
+    //   description: "Neubau 2 Mehrfamilienhäuser mit 14 Wohnungen",
+    // },
+    // {
+    //   id: 16,
+    //   src: "/images/noImage.png",
+    //   title: "Altura",
+    //   description: "Neubau 2 Einfamilienhäuser mit exklusiver Weitsicht",
+    // },
+
+    /*{
       id: 10,
       src: "/images/sternen.png",
       title: "Sternen",
@@ -262,7 +304,7 @@ const Projects = () => {
       title: "Sakral",
       type: "archive",
       description: "Umbau  'SAKRAL'",
-    },
+    },*/
   ];
 
   const handleLoadMore = () => {
@@ -297,16 +339,12 @@ const Projects = () => {
             </h1> */}
           </div>
           <div className="flex flex-wrap flex-row items-center justify-start gap-4">
-            <button
-              onClick={toggleArchive}
-              className={` font-light border  border-white text-[14px] px-6 py-3 transition-colors ${
-                showArchive
-                  ? "bg-white text-black "
-                  : "bg-transparent text-white hover:bg-white/20 "
-              }`}
+            <Link
+              href="/archiv"
+              className="btn font-light border border-white text-[14px] px-6 py-3 bg-transparent text-white hover:bg-white/20"
             >
               Archive
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -350,7 +388,7 @@ const Projects = () => {
           <div className="mt-8">
             <button
               onClick={handleLoadMore}
-              className="text-white border border-white px-10 py-3 text-sm tracking-[0.2em] hover:bg-white hover:text-black transition-all uppercase"
+              className="btn text-white border border-white px-10 py-3 text-sm tracking-[0.2em] hover:bg-white hover:text-black uppercase"
             >
               Mehr laden
             </button>

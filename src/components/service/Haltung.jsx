@@ -26,7 +26,7 @@ const Haltung = () => {
           Nutzung und Umfeld als zusammenhängendes Ganzes.
         </p>
 
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full gap-4 sm:gap-6">
+        {/* <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full gap-4 sm:gap-6">
           <p className="text-[#0D0D0D] tracking-tight">Company Brochure</p>
 
           <button className="w-full sm:w-auto flex flex-row text-white items-center justify-center sm:justify-start gap-2 bg-black px-5 py-3 border-[#333333]">
@@ -38,7 +38,7 @@ const Haltung = () => {
             />
             Download
           </button>
-        </div>
+        </div> */}
       </div>
 
       <div className="w-full lg:w-[60%]">

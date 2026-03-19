@@ -34,34 +34,38 @@ const page = () => {
           clientType={clientType}
           onClientTypeChange={setClientType}
         />
-        <ProcessHeroSection />
+        <ProcessHeroSection clientType={clientType} />
         <ProcessVisualization
           onPhaseClick={handlePhaseClick}
           selectedPhase={selectedPhase}
-        />
-        <PhaseDetailPanel
-          phase={
-            selectedPhase
-              ? {
-                  id: selectedPhase,
-                  title: "",
-                  color: "",
-                  description: "",
-                  why: "",
-                  keyDecisions: [],
-                  subSteps: [],
-                  clientBenefit: "",
-                }
-              : null
-          }
-          onClose={handleClosePanel}
           clientType={clientType}
         />
         <InvestorMethodology />
         <CaseExample />
-
         <MethodologyCTA />
       </div>
+      <PhaseDetailPanel
+        phase={
+          selectedPhase
+            ? {
+                id: selectedPhase,
+                title: "",
+                color:
+                  selectedPhase === 1
+                    ? "#FF6B35"
+                    : selectedPhase === 2
+                    ? "#00B4D8"
+                    : "#06FFA5",
+                descriptionLines: [],
+                footerNote: "",
+                steps: [],
+                totalPhases: 3,
+              }
+            : null
+        }
+        onClose={handleClosePanel}
+        clientType={clientType}
+      />
     </div>
   );
 };

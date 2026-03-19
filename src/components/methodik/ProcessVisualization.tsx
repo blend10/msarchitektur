@@ -16,45 +16,40 @@ interface Phase {
 interface ProcessVisualizationProps {
   onPhaseClick: (phaseId: number) => void;
   selectedPhase: number | null;
+  clientType: "private" | "investor";
 }
 
-const phases: Phase[] = [
-  {
-    id: 1,
-    title: "Analysis & Strategy",
-    color: "#FF6B35",
-    glowColor: "rgba(255, 107, 53, 0.4)",
-    angle: 0, // kept, but we will override with PHASE_ANGLE_BY_ID for stability
-  },
-  {
-    id: 2,
-    title: "Design & Planning",
-    color: "#00B4D8",
-    glowColor: "rgba(0, 180, 216, 0.4)",
-    angle: 90,
-  },
-  {
-    id: 3,
-    title: "Documentation & Permits",
-    color: "#06FFA5",
-    glowColor: "rgba(6, 255, 165, 0.4)",
-    angle: 180,
-  },
-  {
-    id: 4,
-    title: "Execution & Delivery",
-    color: "#A78BFA",
-    glowColor: "rgba(167, 139, 250, 0.4)",
-    angle: 270,
-  },
+const phasesBase = [
+  { id: 1, color: "#FF6B35", glowColor: "rgba(255, 107, 53, 0.4)", angle: 0 },
+  { id: 2, color: "#00B4D8", glowColor: "rgba(0, 180, 216, 0.4)", angle: 90 },
+  { id: 3, color: "#06FFA5", glowColor: "rgba(6, 255, 165, 0.4)", angle: 180 },
 ];
+
+const phaseTitles: Record<"private" | "investor", string[]> = {
+  private: [
+    "Projektdefinition und\n Konzeptphase",
+    "Projektierung und\n Baubewilligungsverfahren",
+    "Umsetzung & Realisierung",
+  ],
+  investor: [
+    "Projektdefinition und\n Konzeptphase",
+    "Projektierung und\n Baubewilligungsverfahren",
+    "Umsetzung & Realisierung",
+  ],
+};
+
+function buildPhases(clientType: "private" | "investor"): Phase[] {
+  return phasesBase.map((p, i) => ({
+    ...p,
+    title: phaseTitles[clientType][i],
+  }));
+}
 
 // Lock positions by phase id (requested layout)
 const PHASE_ANGLE_BY_ID: Record<number, number> = {
-  1: 0, // top
-  2: 90, // right
-  3: 180, // bottom
-  4: 270, // left
+  1: 0, // left
+  2: 90, // top
+  3: 270, // right
 } as const;
 
 // Constants
@@ -75,15 +70,16 @@ const TRANSITIONS = {
 export function ProcessVisualization({
   onPhaseClick,
   selectedPhase,
+  clientType,
 }: ProcessVisualizationProps) {
   const [hoveredPhase, setHoveredPhase] = useState<number | null>(null);
 
   // Stable order: 1(top) -> 2(right) -> 3(bottom) -> 4(left)
   const orderedPhases = useMemo(() => {
-    return [...phases].sort(
+    return [...buildPhases(clientType)].sort(
       (a, b) => (PHASE_ANGLE_BY_ID[a.id] ?? 0) - (PHASE_ANGLE_BY_ID[b.id] ?? 0),
     );
-  }, []);
+  }, [clientType]);
 
   const phasePositions = useMemo(() => {
     return orderedPhases.map((phase) => {
@@ -131,7 +127,7 @@ export function ProcessVisualization({
           The <span className="font-normal">Process</span>
         </h2>
         <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-          Four integrated phases that transform complexity into clarity
+          Drei integrierte Phasen, die Komplexität in Klarheit verwandeln
         </p>
       </motion.div>
 
@@ -185,16 +181,6 @@ export function ProcessVisualization({
             }}
           />
 
-          {/* Center circle */}
-          <circle
-            cx={CONFIG.centerX}
-            cy={CONFIG.centerY}
-            r="70"
-            fill="url(#centerGradient)"
-            stroke="rgba(255, 255, 255, 0.15)"
-            strokeWidth="1"
-          />
-
           {/* Connecting lines + flowing dot */}
           {connections.map((conn, index) => (
             <g key={`connection-${conn.id}`}>
@@ -216,6 +202,30 @@ export function ProcessVisualization({
               </circle>
             </g>
           ))}
+          {/* Center circle */}
+          <circle
+            cx={CONFIG.centerX}
+            cy={CONFIG.centerY}
+            r="70"
+            fill="#0B0B0B"
+            stroke="rgba(255, 255, 255, 0.15)"
+            strokeWidth="1"
+          />
+
+          {/* Center text */}
+          <text
+            x={CONFIG.centerX}
+            y={CONFIG.centerY}
+            textAnchor="middle"
+            fill="white"
+            fontSize="16"
+            fontWeight="300"
+            opacity="0.9"
+          >
+            <tspan x={CONFIG.centerX} dy="3">
+              Projektzyklus
+            </tspan>
+          </text>
 
           {/* Phase nodes */}
           {orderedPhases.map((phase, index) => {
@@ -259,7 +269,7 @@ export function ProcessVisualization({
                   className="cursor-pointer transition-all duration-300"
                   style={{
                     filter: isActive
-                      ? `drop-shadow(0 0 20px ${phase.color})`
+                      ? `drop-shadow(0 0 30px ${phase.color})`
                       : "none",
                   }}
                   onMouseEnter={() => setHoveredPhase(phase.id)}
@@ -298,21 +308,6 @@ export function ProcessVisualization({
               </g>
             );
           })}
-
-          {/* Center text */}
-          <text
-            x={CONFIG.centerX}
-            y={CONFIG.centerY}
-            textAnchor="middle"
-            fill="white"
-            fontSize="16"
-            fontWeight="300"
-            opacity="0.5"
-          >
-            <tspan x={CONFIG.centerX} dy="3">
-              Projektzyklus
-            </tspan>
-          </text>
         </svg>
 
         {/* Phase labels */}
@@ -322,14 +317,21 @@ export function ProcessVisualization({
             hoveredPhase === phase.id || selectedPhase === phase.id;
           const leftPercent = (labelPos.x / CONFIG.viewBox) * 100;
           const topPercent = (labelPos.y / CONFIG.viewBox) * 100;
+          const angle = PHASE_ANGLE_BY_ID[phase.id] ?? 0;
+          let finalLeft = leftPercent;
+          let finalTop = topPercent;
+
+          if (angle === 0) finalTop = 0;
+          if (angle === 270) finalLeft = -15;
+          if (angle === 90) finalLeft = 115;
 
           return (
             <div
               key={`label-${phase.id}`}
               className="absolute cursor-pointer"
               style={{
-                left: `${leftPercent}%`,
-                top: `${topPercent}%`,
+                left: `${finalLeft}%`,
+                top: `${finalTop}%`,
                 transform: "translate(-50%, -50%)",
               }}
               onMouseEnter={() => setHoveredPhase(phase.id)}
@@ -348,13 +350,13 @@ export function ProcessVisualization({
                   boxShadow: isActive ? `0 0 30px ${phase.color}40` : "none",
                 }}
                 animate={{
-                  scale: isActive ? 1.05 : 1,
+                  scale: isActive ? 1.1 : 1,
                 }}
                 transition={TRANSITIONS.spring}
               >
-                <div className="text-center whitespace-nowrap">
+                <div className="text-center">
                   <div
-                    className="text-base font-medium transition-all duration-300 mb-1"
+                    className="text-base font-medium transition-all duration-300 mb-1 whitespace-pre-line"
                     style={{ color: isActive ? phase.color : "white" }}
                   >
                     {phase.title}
@@ -369,7 +371,7 @@ export function ProcessVisualization({
                     className="flex items-center justify-center gap-1 text-xs overflow-hidden"
                     style={{ color: phase.color }}
                   >
-                    Click to explore
+                    Phase entdecken
                     <ArrowRight className="w-3 h-3" />
                   </motion.div>
                 </div>

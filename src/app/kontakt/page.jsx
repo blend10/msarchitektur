@@ -4,11 +4,11 @@ import Image from "next/image";
 
 const Page = () => {
   return (
-    <div className="w-full bg-black">
+    <div className="w-full bg-white">
       {/* --- HERO IMAGE SECTION --- */}
       <div className="relative w-full h-[840px]">
         <Image
-          src="/images/kontaktPhoto.jpg"
+          src="/images/kontaktPhoto2.png"
           alt="Contact Hero"
           fill
           className="object-cover"
@@ -26,20 +26,45 @@ const Page = () => {
               Kontaktieren Sie uns
             </h1>
             <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-12 max-w-md">
-              Für Anfragen, Kooperationen oder Projektbesprechungen füllen Sie
-              bitte das Formular aus. Unser Team wird so schnell wie möglich
-              antworten, um die nächsten Schritte zu besprechen.
+              Für Anfragen füllen Sie bitte das Formular aus. Wir werden
+              anschliessend in Kontakt mit Ihnen treten.
             </p>
 
             <div className="flex flex-col gap-8 text-sm md:text-base font-light text-black">
-              <p>+41 56 560 01 16</p>
-              <p>info@ms-architektur.ch</p>
+              <a
+                href="tel:+41565552940"
+                className="hover:opacity-70 transition-opacity w-fit"
+              >
+                056 555 29 40
+              </a>
+              <a
+                href="mailto:info@ms-architektur.ch"
+                className="hover:opacity-70 transition-opacity w-fit"
+              >
+                info@ms-architektur.ch
+              </a>
 
-              <div className="leading-relaxed">
+              <a
+                href="https://www.google.com/maps/place/Roosstrasse+47,+8832+Wollerau,+Schweiz/@47.190306,8.72233,3405m/data=!3m1!1e3!4m6!3m5!1s0x479ab22eb5b040ab:0x9063f1aff08c0cba!8m2!3d47.1903064!4d8.7223295!16s%2Fg%2F11cs5psvhc?hl=de&entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="leading-relaxed hover:opacity-70 transition-opacity w-fit"
+              >
+                <p>MS Architektur AG</p>
+                <p>Roossstrasse 47</p>
+                <p>8832 Wollerau</p>
+              </a>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=MS+Architektur+AG+Neuenhoferstrasse+99+5400+Baden"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="leading-relaxed hover:opacity-70 transition-opacity w-fit"
+              >
+                <p>Büro:</p>
                 <p>MS Architektur AG</p>
                 <p>Neuenhoferstrasse 99</p>
-                <p>5400 Baden - CH</p>
-              </div>
+                <p>5400 Baden</p>
+              </a>
             </div>
           </div>
 
@@ -53,7 +78,7 @@ const Page = () => {
               <input
                 id="name"
                 type="text"
-                placeholder="Jane Smith"
+                placeholder="Vorname Nachname"
                 className="w-full border-b border-gray-300 py-3 text-black placeholder-gray-400 focus:outline-none focus:border-black transition-colors bg-transparent"
               />
             </div>
@@ -66,7 +91,7 @@ const Page = () => {
               <input
                 id="company"
                 type="text"
-                placeholder="Framer Inc."
+                placeholder="Architektur AG"
                 className="w-full border-b border-gray-300 py-3 text-black placeholder-gray-400 focus:outline-none focus:border-black transition-colors bg-transparent"
               />
             </div>
@@ -79,7 +104,7 @@ const Page = () => {
               <input
                 id="email"
                 type="email"
-                placeholder="jane@framer.com"
+                placeholder="info@architektur.ch"
                 className="w-full border-b border-gray-300 py-3 text-black placeholder-gray-400 focus:outline-none focus:border-black transition-colors bg-transparent"
               />
             </div>
@@ -92,7 +117,7 @@ const Page = () => {
               <textarea
                 id="message"
                 rows={4}
-                placeholder="Project information"
+                placeholder="Ihre Nachricht"
                 className="w-full border-b border-gray-300 py-3 text-black placeholder-gray-400 focus:outline-none focus:border-black transition-colors bg-transparent resize-none"
               />
             </div>

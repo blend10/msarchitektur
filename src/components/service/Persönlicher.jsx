@@ -38,12 +38,12 @@ const Persönlicher = () => {
 
         <div className="w-full lg:w-1/2 flex flex-col items-center gap-2">
           <Image
-            src="/images/architect.png"
+            src="/images/Architect2.png"
             alt="architectphoto"
             width={710}
             height={602}
             sizes="(min-width: 1024px) 50vw, 100vw"
-            className="w-full h-auto"
+            className="w-full h-auto grayscale"
           />
 
           <div className="flex flex-row items-center justify-between w-full">

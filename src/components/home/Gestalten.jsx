@@ -10,7 +10,7 @@ const Gestalten = ({ src }) => {
         alt="footerBG"
         fill
         className="object-cover"
-        quality={100}
+        sizes="100vw"
       />
 
       {/* Overlay */}

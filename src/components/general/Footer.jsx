@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="container mx-auto px-6 flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-0 mb-16 lg:mb-20">
         {/* Logo Section */}
 
-        <div className="w-full lg:w-1/2 flex justify-start">
+        <div className="w-full lg:w-1/4 flex justify-start">
           <Link href="/">
             <Image
               src="/images/logo.svg"
@@ -21,20 +21,35 @@ const Footer = () => {
         </div>
 
         {/* Links Section */}
-        <div className="w-full lg:w-1/2 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-4 text-left">
-          {/* Column 1: Projekte */}
+        <div className="w-full lg:w-3/4 grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-4 text-left">
+          {/* Column 1: Öffnungszeiten */}
+          <div className="flex flex-col gap-4">
+            <h1 className="text-[18px] md:text-[20px] text-white font-light tracking-[-1.04px]">
+              Öffnungszeiten
+            </h1>
+            <div className="flex flex-col gap-2 font-thin text-white/80 text-sm md:text-base">
+              <p>Mo. - Do. 08:30 - 17:00 Uhr</p>
+              <p>Fr. 08:30 - 13:00 Uhr</p>
+            </div>
+          </div>
           <div className="flex flex-col gap-4">
             <h1 className="text-[18px] md:text-[20px] text-white font-light tracking-[-1.04px]">
               Projekte
             </h1>
             <div className="flex flex-col gap-2 font-thin text-white/80 text-sm md:text-base">
-              <Link href="/projekte/sternen">
+              <Link href="/projekte/casa-five">
                 {" "}
                 <p className="hover:text-white transition-colors cursor-pointer">
-                  Sternen
+                  Casa Five
                 </p>
               </Link>
 
+              <Link href="/projekte/halden">
+                {" "}
+                <p className="hover:text-white transition-colors cursor-pointer">
+                  Halden
+                </p>
+              </Link>
               <Link href="/projekte/vista">
                 {" "}
                 <p className="hover:text-white transition-colors cursor-pointer">
@@ -47,12 +62,7 @@ const Footer = () => {
                   Pura
                 </p>
               </Link>
-              <Link href="/projekte/rundi">
-                {" "}
-                <p className="hover:text-white transition-colors cursor-pointer">
-                  Rundi
-                </p>
-              </Link>
+              
             </div>
           </div>
 
