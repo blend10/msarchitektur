@@ -24,7 +24,7 @@ const Projects = () => {
     },
     {
       id: 3,
-      src: "/images/casavista1.jpg",
+      src: "/images/gallery1.jpg",
       title: "Casa Five",
       description: "Neubau 5 Einfamilienhäuser",
     },

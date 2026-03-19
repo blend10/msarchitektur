@@ -47,7 +47,7 @@ const projects = [
     gallery: [
       { src: "/images/gallery1.jpg", alt: "Exterior Garden" },
       { src: "/images/gallery2.jpg", alt: "Pool View" },
-      { src: "/images/gallery6.jpg", alt: "Facade Detail" },
+      { src: "/images/galleryx.jpg", alt: "Facade Detail" },
       { src: "/images/gallery4.jpg", alt: "Bathroom" },
       { src: "/images/gallery5.jpg", alt: "Bedroom" },
       { src: "/images/gallery66.jpg", alt: "Living Room" },
@@ -105,7 +105,7 @@ const projects = [
     id: "freva",
     title: "Freva",
     image: {
-      src: "/images/frevaImg.png",
+      src: "/images/freva123.png",
       alt: "Facade Detail",
       type: "image",
     },
@@ -290,7 +290,7 @@ const projects = [
     baujahr: "2026",
     bauherrschaft: "Familie Oberholzer",
     gallery: [
-      { src: "/images/Vista3.png", alt: "Exterior Garden" },
+      { src: "/images/Vista33.png", alt: "Exterior Garden" },
       { src: "/images/Vista4.png", alt: "Exterior Garden" },
       { src: "/images/vista.png", alt: "Exterior Garden" },
       { src: "/images/Vista5.png", alt: "Exterior Garden" },
