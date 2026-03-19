@@ -110,13 +110,13 @@ const projects = [
 
 export default function Archiv() {
   return (
-    <section className="container mx-auto px-6 py-26">
+    <section className="container mx-auto px-6 py-16 md:py-24">
       {/* Header */}
-      <div className="py-20">
-        <h1 className="text-6xl font-light text-black leading-tight mb-4">
-          Abgeschlossene Projekte im <br /> Überblick.
+      <div className="py-12 md:py-20">
+        <h1 className="text-4xl md:text-6xl font-light text-black leading-tight mb-4">
+          Abgeschlossene Projekte im <br className="hidden md:block" /> Überblick.
         </h1>
-        <p className="text-sm text-black/80 mb-12">
+        <p className="text-sm text-black/80 mb-8 md:mb-12">
           Diese Seite bietet eine Übersicht über die abgeschlossenen Projekte.
         </p>
       </div>
@@ -124,7 +124,7 @@ export default function Archiv() {
       {/* Table */}
       <div className="w-full">
         {/* Column Headers */}
-        <div className="grid grid-cols-[1fr_2fr_2fr] border-b border-gray-200 pb-2 mb-1">
+        <div className="hidden md:grid md:grid-cols-[1fr_2fr_2fr] border-b border-gray-200 pb-2 mb-1">
           <span className="text-xs font-semibold uppercase tracking-widest text-gray-400">
             Projekt
           </span>
@@ -140,11 +140,17 @@ export default function Archiv() {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="grid grid-cols-[1fr_2fr_2fr] border-b border-gray-100 py-3 hover:bg-gray-50 transition-colors duration-150"
+            className="flex flex-col md:grid md:grid-cols-[1fr_2fr_2fr] gap-1 md:gap-4 border-b border-gray-100 py-4 hover:bg-gray-50 transition-colors duration-150"
           >
-            <span className="text-sm text-gray-800">{project.name}</span>
-            <span className="text-sm text-gray-600">{project.description}</span>
-            <span className="text-sm text-gray-600">{project.location}</span>
+            <span className="text-base font-medium md:text-sm md:font-normal text-gray-900 md:text-gray-800">
+              {project.name}
+            </span>
+            <span className="text-sm text-gray-600">
+              {project.description}
+            </span>
+            <span className="text-xs md:text-sm text-gray-500 md:text-gray-600 mt-1 md:mt-0">
+              {project.location}
+            </span>
           </div>
         ))}
       </div>
