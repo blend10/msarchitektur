@@ -152,7 +152,7 @@ export default function ProjectGallery({ images }) {
                         sizes="100vw"
                       />
                       {/* Hover hint overlay */}
-                      <div className="absolute top-3 right-3 md:hidden pointer-events-none">
+                      {/* <div className="absolute top-3 right-3 md:hidden pointer-events-none">
                         <span className="bg-black/65 text-white text-[10px] tracking-widest uppercase px-3 py-2 backdrop-blur-sm rounded">
                           Doppelt tippen
                         </span>
@@ -166,7 +166,7 @@ export default function ProjectGallery({ images }) {
                             Doppelt tippen zum Vergrößern
                           </span>
                         </span>
-                      </div>
+                      </div> */}
                     </>
                   )}
                 </div>

@@ -6,7 +6,7 @@ const Projektergebnisse = () => {
   return (
     <div className="container mx-auto w-full">
       {" "}
-      <div className="grid lg:grid-cols-2 py-20">
+      {/* <div className="grid lg:grid-cols-2 py-20">
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm bg-gray-900">
           <Image
             src="/images/leftPhoto.png"
@@ -19,7 +19,6 @@ const Projektergebnisse = () => {
         </div>
 
         <div className="flex flex-col bg-black bg-gradient-to-l from-white/10 to-transparent justify-center p-12 space-y-8">
-          {/* Badge */}
           <div>
             <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/15  tracking-wide text-white uppercase">
               <Layers className="w-3.5 h-3.5" />
@@ -36,7 +35,7 @@ const Projektergebnisse = () => {
             eingesetzt und unterstützen fundierte Projektentscheidungen.
           </p>
         </div>
-      </div>
+      </div> */}
       <div className="px-4 md:px-0">
         <h1 className="text-xl text-black lg:text-2xl xl:text-[47px] font-light leading-tight pb-10">
           Methodik für planbare Projektergebnisse

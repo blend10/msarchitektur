@@ -36,7 +36,7 @@ export function CaseExample() {
   return (
     <div className="bg-transparent">
       <div className="relative  z-10 container  mx-auto px-6 py-32">
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -61,10 +61,9 @@ export function CaseExample() {
             Eine luxuriöse Wohnanlage, die unsere vollständige Methodik von{" "}
             <br /> der Vision zur Realität präsentiert.
           </p>
-        </motion.div>
+        </motion.div> */}
 
-        {/* Project Image Showcase */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -80,7 +79,6 @@ export function CaseExample() {
             transition={{ duration: 0.6 }}
           />
 
-          {/* Image overlay info */}
           <div className="absolute bottom-0 left-0 right-0 z-20 p-8 md:p-12">
             <div className="grid md:grid-cols-3 gap-6">
               <div className="flex items-center justify-center gap-3 text-white">
@@ -106,7 +104,7 @@ export function CaseExample() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Enhanced Project Stats */}
         <motion.div

@@ -124,7 +124,7 @@ export function ProcessVisualization({
         className="text-center mb-30"
       >
         <h2 className="text-5xl md:text-6xl font-light text-white mb-6">
-          The <span className="font-normal">Process</span>
+          Der <span className="font-normal">Prozess</span>
         </h2>
         <p className="text-xl text-gray-400 max-w-2xl mx-auto">
           Drei integrierte Phasen, die Komplexität in Klarheit verwandeln

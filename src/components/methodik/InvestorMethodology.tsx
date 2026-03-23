@@ -38,7 +38,7 @@ export default function InvestorMethodology() {
   return (
     <section className="text-white py-20 px-5 md:px-0">
       <div className="container mx-auto w-full">
-        <div className="grid lg:grid-cols-2 mb-24">
+        {/* <div className="grid lg:grid-cols-2 mb-24">
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm bg-gray-900">
             <Image
               src="/images/leftPhoto.png"
@@ -52,7 +52,6 @@ export default function InvestorMethodology() {
           </div>
 
           <div className="flex flex-col bg-black bg-gradient-to-l from-white/10 to-transparent justify-center p-12 space-y-8">
-            {/* Badge */}
             <div>
               <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/15  tracking-wide text-white uppercase">
                 <Layers className="w-3.5 h-3.5" />
@@ -69,7 +68,7 @@ export default function InvestorMethodology() {
               eingesetzt und unterstützen fundierte Projektentscheidungen.
             </p>
           </div>
-        </div>
+        </div> */}
 
         {/* Bottom Section: 2x2 Grid */}
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-16">

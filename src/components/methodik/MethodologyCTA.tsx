@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
-import { Calendar, Download, ArrowRight } from "lucide-react";
+import { Calendar, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export function MethodologyCTA() {
   return (
@@ -75,27 +76,29 @@ export function MethodologyCTA() {
                 whileTap={{ scale: 0.95 }}
                 className="group relative px-10 py-5 rounded-full bg-white text-black font-medium text-lg overflow-hidden"
               >
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
-                <span className="relative flex items-center gap-3">
-                  <Calendar className="w-5 h-5" />
-                  Beratung buchen
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
+                <Link href="/kontakt">
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: 0 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <span className="relative flex items-center gap-3">
+                    <Calendar className="w-5 h-5" />
+                    Beratung buchen
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Link>
               </motion.button>
 
-              <motion.button
+              {/* <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="group px-10 py-5 rounded-full border-2 border-white/20 text-white font-medium text-lg flex items-center gap-3 hover:bg-white/5 hover:border-white/40 transition-all duration-300"
               >
                 <Download className="w-5 h-5 group-hover:animate-bounce" />
                 Methodik herunterladen
-              </motion.button>
+              </motion.button> */}
             </div>
 
             <motion.p

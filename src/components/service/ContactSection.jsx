@@ -1,4 +1,11 @@
+"use client";
+
+import { useState } from "react";
+import TerminModal from "./TerminModal";
+
 export default function ContactSection() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section className="py-20 px-6 bg-white text-center">
       {/* Heading */}
@@ -13,11 +20,14 @@ export default function ContactSection() {
       {/* Cards */}
       <div className="flex flex-col md:flex-row justify-center gap-10 container mx-auto ">
         {/* Anrufen */}
-        <div className="flex-1 p-8 text-left border border-gray-200 flex flex-col items-start justify-between">
+        <a
+          href="tel:+41565552940"
+          className="flex-1 p-8 text-left border border-gray-200 flex flex-col items-start justify-between hover:bg-gray-50 transition-colors group transition-all duration-300"
+        >
           <div className="flex items-center gap-2 text-gray-700 font-medium mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-4 h-4"
+              className="w-4 h-4 group-hover:scale-110 transition-transform"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -31,24 +41,30 @@ export default function ContactSection() {
             </svg>
             <span className="text-[18px] text-black">Anrufen</span>
           </div>
-          <div>
+          <div className="w-full">
             <p className="text-[14px] text-[#0D0D0D] font-light mb-2">
-              +41 44 500 59 88
+              +41 56 555 29 40
             </p>
-            <p className="text-[14px] text-[#0D0D0D] font-light leading-relaxed">
+            <p className="text-[14px] text-[#0D0D0D] font-light leading-relaxed mb-6">
               Mo – Do: 08:30 – 17:00 Uhr
               <br />
               Fr: 08:30 – 13:00 Uhr
             </p>
+            <div className="w-full py-2.5 border border-black text-center text-xs uppercase tracking-widest font-semibold group-hover:bg-black group-hover:text-white transition-all duration-300">
+              Direkt anrufen
+            </div>
           </div>
-        </div>
+        </a>
 
         {/* Termin vereinbaren */}
-        <div className="flex-1 p-8 text-left border border-gray-200 flex flex-col items-start justify-between">
+        <div
+          onClick={() => setIsModalOpen(true)}
+          className="flex-1 p-8 text-left border border-gray-200 flex flex-col items-start justify-between cursor-pointer hover:bg-gray-50 transition-colors group transition-all duration-300"
+        >
           <div className="flex items-center gap-2 text-gray-700 font-medium mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-4 h-4"
+              className="w-4 h-4 group-hover:scale-110 transition-transform"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -62,10 +78,15 @@ export default function ContactSection() {
             </svg>
             <span className="text-[18px] text-black">Termin vereinbaren</span>
           </div>
-          <p className="text-[14px] text-[#0D0D0D] font-light mb-2">
-            Besuchen Sie Ihr Anliegen für einen Rückruf oder buchen Sie einen
-            Termin.
-          </p>
+          <div className="w-full">
+            <p className="text-[14px] text-[#0D0D0D] font-light mb-6">
+              Besuchen Sie Ihr Anliegen für einen Rückruf oder buchen Sie einen
+              Termin.
+            </p>
+            <div className="w-full py-2.5 border border-black text-center text-xs uppercase tracking-widest font-semibold group-hover:bg-black group-hover:text-white transition-all duration-300">
+              Termin buchen
+            </div>
+          </div>
         </div>
 
         {/* Hilfe */}
@@ -97,6 +118,8 @@ export default function ContactSection() {
           </div>
         </div>
       </div>
+
+      <TerminModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 }

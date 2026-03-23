@@ -343,7 +343,7 @@ const Projects = () => {
               href="/archiv"
               className="btn font-light border border-white text-[14px] px-6 py-3 bg-transparent text-white hover:bg-white/20"
             >
-              Archive
+              Archiv
             </Link>
           </div>
         </div>

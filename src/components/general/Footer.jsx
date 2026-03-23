@@ -21,9 +21,9 @@ const Footer = () => {
         </div>
 
         {/* Links Section */}
-        <div className="w-full lg:w-3/4 grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-4 text-left">
+        <div className="w-full lg:w-3/4 grid grid-cols-2 md:grid-cols-3  gap-10 md:gap-4 text-left">
           {/* Column 1: Öffnungszeiten */}
-          <div className="flex flex-col gap-4">
+          {/* <div className="flex flex-col gap-4">
             <h1 className="text-[18px] md:text-[20px] text-white font-light tracking-[-1.04px]">
               Öffnungszeiten
             </h1>
@@ -31,7 +31,7 @@ const Footer = () => {
               <p>Mo. - Do. 08:30 - 17:00 Uhr</p>
               <p>Fr. 08:30 - 13:00 Uhr</p>
             </div>
-          </div>
+          </div> */}
           <div className="flex flex-col gap-4">
             <h1 className="text-[18px] md:text-[20px] text-white font-light tracking-[-1.04px]">
               Projekte
@@ -62,7 +62,6 @@ const Footer = () => {
                   Pura
                 </p>
               </Link>
-              
             </div>
           </div>
 
@@ -93,10 +92,11 @@ const Footer = () => {
             </h1>
             <div className="flex flex-col gap-2 font-thin text-white/80 text-sm md:text-base">
               <a
-                href="tel:+41565600116"
+                href="tel:+41565552940"
                 className="hover:text-white transition-colors"
               >
-                +41 56 560 01 16
+                +41 56 555 29 40
+
               </a>
               <a
                 href="mailto:info@ms-architektur.ch"
@@ -119,12 +119,21 @@ const Footer = () => {
         </div>
 
         <div className="order-1 md:order-2 flex flex-row items-center justify-center md:justify-end gap-6 text-[#FFFFFFB2] text-[12px] md:text-[14px] font-light tracking-[-0.61px]">
-          <h1 className="hover:text-white transition-colors cursor-pointer">
+          <Link
+            href="/datenschutzerklaerung"
+            className="hover:text-white transition-colors cursor-pointer"
+          >
             Datenschutz
-          </h1>
-          <h1 className="hover:text-white transition-colors cursor-pointer">
+          </Link>
+          <Link
+            href="/impressum"
+            className="hover:text-white transition-colors cursor-pointer"
+          >
+            Impressum
+          </Link>
+          {/* <h1 className="hover:text-white transition-colors cursor-pointer">
             Nutzungsbedingungen
-          </h1>
+          </h1> */}
         </div>
       </div>
     </div>

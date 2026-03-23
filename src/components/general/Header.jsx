@@ -84,25 +84,28 @@ export default function Header() {
     if (!headerRef.current) return;
 
     const headerRect = headerRef.current.getBoundingClientRect();
-    // Sample a few horizontal points at the vertical center of the header
     const sampleY = headerRect.top + headerRect.height / 2;
+    
+    // Increased sampling points for better stability (7 points across the width)
     const sampleXs = [
-      headerRect.left + headerRect.width * 0.15,
+      headerRect.left + headerRect.width * 0.1,
+      headerRect.left + headerRect.width * 0.25,
+      headerRect.left + headerRect.width * 0.4,
       headerRect.left + headerRect.width * 0.5,
-      headerRect.left + headerRect.width * 0.85,
+      headerRect.left + headerRect.width * 0.65,
+      headerRect.left + headerRect.width * 0.8,
+      headerRect.left + headerRect.width * 0.9,
     ];
 
     let totalLum = 0;
     let count = 0;
 
-    for (const x of sampleXs) {
-      // Temporarily hide header so elementFromPoint hits the content behind it
-      headerRef.current.style.pointerEvents = "none";
-      headerRef.current.style.visibility = "hidden";
-      const el = document.elementFromPoint(x, sampleY);
-      headerRef.current.style.visibility = "";
-      headerRef.current.style.pointerEvents = "";
+    // Temporarily hide header to sample content behind it
+    headerRef.current.style.pointerEvents = "none";
+    headerRef.current.style.visibility = "hidden";
 
+    for (const x of sampleXs) {
+      const el = document.elementFromPoint(x, sampleY);
       if (el) {
         const color = getEffectiveBgColor(el);
         totalLum += luminance(color);
@@ -110,10 +113,22 @@ export default function Header() {
       }
     }
 
+    headerRef.current.style.visibility = "";
+    headerRef.current.style.pointerEvents = "";
+
     if (count > 0) {
       const avgLum = totalLum / count;
-      // threshold: > 0.5 = light background → use dark text
-      setIsDark(avgLum < 0.5);
+      
+      // Hysteresis to prevent flickering:
+      // If currently dark bg (white text), stay until avgLum > 0.6 (quite light)
+      // If currently light bg (dark text), wait until avgLum < 0.4 (quite dark)
+      setIsDark((prev) => {
+        if (prev) {
+          return avgLum < 0.6;
+        } else {
+          return avgLum < 0.4;
+        }
+      });
     }
   }, []);
 
@@ -126,12 +141,23 @@ export default function Header() {
       });
     };
 
-    throttledDetect(); // initial check
+    // Multiple checks on mount to ensure detection happens after layout/loading
+    throttledDetect(); 
+    const timer1 = setTimeout(throttledDetect, 100);
+    const timer2 = setTimeout(throttledDetect, 500);
+    const timer3 = setTimeout(throttledDetect, 1500);
+
     window.addEventListener("scroll", throttledDetect, { passive: true });
     window.addEventListener("resize", throttledDetect, { passive: true });
+    window.addEventListener("load", throttledDetect);
+
     return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
       window.removeEventListener("scroll", throttledDetect);
       window.removeEventListener("resize", throttledDetect);
+      window.removeEventListener("load", throttledDetect);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, [detectBackground]);
