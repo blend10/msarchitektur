@@ -31,7 +31,7 @@ const page = () => {
         <div style={{ width: "100%", height: 1200, position: "relative" }}>
           <LiquidEther
             colors={["#222222", "#777777", "#bbbbbb", "#ffffff"]}
-            mouseForce={20}
+            mouseForce={12}
             cursorSize={100}
             isViscous
             viscous={30}
@@ -43,7 +43,7 @@ const page = () => {
             autoSpeed={0.5}
             autoIntensity={2.2}
             takeoverDuration={0.25}
-            autoResumeDelay={3000}
+            autoResumeDelay={1000}
             autoRampDuration={0.6}
           />
         </div>
