@@ -60,7 +60,7 @@ const page = () => {
           clientType={clientType}
         />
         <InvestorMethodology />
-        <CaseExample />
+        {/* <CaseExample /> */}
         <MethodologyCTA />
       </div>
       <PhaseDetailPanel

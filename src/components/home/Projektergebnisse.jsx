@@ -4,7 +4,7 @@ import { Layers } from "lucide-react";
 import Link from "next/link";
 const Projektergebnisse = () => {
   return (
-    <div className="container mx-auto w-full">
+    <div className="container mx-auto w-full md:py-20 py-10">
       {" "}
       {/* <div className="grid lg:grid-cols-2 py-20">
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm bg-gray-900">

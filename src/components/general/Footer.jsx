@@ -114,7 +114,15 @@ const Footer = () => {
         <div className="order-2 md:order-1 text-center md:text-left">
           <h1 className="text-[#FFFFFFB2] text-[12px] md:text-[14px] font-light tracking-[-0.61px]">
             © {new Date().getFullYear()} ms architektur. Alle Rechte
-            vorbehalten.
+            vorbehalten. | Made with love from{" "}
+            <a
+              href="https://syn-tech.ch/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+            >
+              Syntech Solution AG
+            </a>
           </h1>
         </div>
 
