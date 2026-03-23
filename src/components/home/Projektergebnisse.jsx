@@ -51,11 +51,16 @@ const Projektergebnisse = () => {
 
         <div className="py-10">
           <Link href="/methodik">
-            <button className="text-[#333333] border border-[#333333] px-6 py-2 md:px-8 md:py-3 text-sm md:text-base font-light tracking-wide uppercase hover:bg-[#333333] hover:text-white transition-colors duration-300">
-              Zur Methodik
+          <button className="border border-gray-800 text-gray-800 text-sm px-8 py-3 hover:bg-gray-800 hover:text-white transition-all duration-300 uppercase tracking-widest font-medium">
+              Zur Methodik 
             </button>
           </Link>
         </div>
+        {/* <div className="md:mt-22 mt-10">
+          <button className="border border-gray-800 text-gray-800 text-sm px-8 py-3 hover:bg-gray-800 hover:text-white transition-all duration-300 uppercase tracking-widest font-medium">
+            Alle Leistungen
+          </button>
+        </div> */}
       </div>
     </div>
   );
