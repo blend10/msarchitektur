@@ -85,7 +85,7 @@ export default function ContactSection() {
               Termin.
             </p>
             <div className="w-full py-2.5 border border-black text-center text-xs uppercase tracking-widest font-semibold group-hover:bg-black group-hover:text-white transition-all duration-300">
-              Termin buchen
+              Termin rückruf
             </div>
           </div>
         </div>
