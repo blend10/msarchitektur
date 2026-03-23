@@ -24,8 +24,8 @@ export default function ImpressumPage() {
                   info@ms-architektur.ch
                 </a>
                 <div className="mt-6 text-gray-600">
-                  <p>Altenburgerstrasse 49</p>
-                  <p>5200 Brugg</p>
+                  <p>Neuenhoferstrasse 99</p>
+                  <p>5400 Baden</p>
                 </div>
               </div>
             </div>

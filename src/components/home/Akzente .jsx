@@ -70,7 +70,7 @@ const Akzente = () => {
           number="04"
           title="Vista"
           year="2026"
-          imageSrc="/images/Vista11.png"
+          imageSrc="/images/Vista33.png"
           href="/projekte/vista"
         />
       </div>

@@ -12,7 +12,7 @@ const StartPage = () => {
       {/* Default Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <Image
-          src="/images/startPhoto1.png"
+          src="/images/gallery1.jpg"
           alt="Start Page Background"
           fill
           className="object-cover"

@@ -73,26 +73,26 @@ const Projects = () => {
       id: 10,
       src: "/images/panorama1.png",
       title: "Panorama",
-      // description: "Neubau Mehrfamilienhaus mit 4 Wohnungen",
+      description: "Neubau 9 Terrassenwohnungen",
     },
 
     {
       id: 11,
       src: "/images/startPage.jpg",
       title: "Unterfeld",
-      // description: "Neubau Mehrfamilienhaus mit 4 Wohnungen",
+      description: "Neubau 5 Reihen-Einfamilienhäuser",
     },
     {
       id: 12,
       src: "/images/bollacker.jpg",
       title: "Bollacker",
-      // description: "Neubau Mehrfamilienhaus mit 4 Wohnungen",
+      description: "Neubau 14 Reihen-Einfamilienhäuser",
     },
     {
       id: 13,
       src: "/images/avera.jpg",
       title: "Avera",
-      // description: "Neubau Mehrfamilienhaus mit 4 Wohnungen",
+      description: "Neubau 2 Einfamilienhäuser",
     },
 
     // {
