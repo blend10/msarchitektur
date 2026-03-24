@@ -53,7 +53,7 @@ export function MethodologyCTA() {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
                 <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                 <span className="text-xs uppercase tracking-wider text-gray-300">
-                  Lass uns anfangen
+                  Lassen Sie uns anfangen
                 </span>
               </div>
             </motion.div>
@@ -63,7 +63,7 @@ export function MethodologyCTA() {
             </h2>
             <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
               Bereit, Ihre Vision zum Leben zu erwecken? Lassen Sie uns
-              besprechen, wie die bewährte Methodik von Casa Five für Ihr
+              besprechen, wie die bewährte Methodik  für Ihr
               Projekt funktionieren wird.
             </p>
 

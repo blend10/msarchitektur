@@ -362,9 +362,9 @@ const phaseData: Record<number, Record<"private" | "investor", PhaseDetail>> = {
           subSection: {
             title: "Zusammensetzung des Planungsteams.",
             items: [
-              "Structural engineer (structural analysis)",
-              "HVAC engineer (building services engineering)",
-              "Geologist",
+              "Bauingenieur",
+              "HLKSE-Ingenieur",
+              "Geologe",
               "Visualisierungen",
               "Baugespann",
             ],
