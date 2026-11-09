@@ -85,24 +85,12 @@ const Page = () => {
               >
                 info@ms-architektur.ch
               </a>
-
-              <a
-                href="https://www.google.com/maps/place/Roosstrasse+47,+8832+Wollerau,+Schweiz/@47.190306,8.72233,3405m/data=!3m1!1e3!4m6!3m5!1s0x479ab22eb5b040ab:0x9063f1aff08c0cba!8m2!3d47.1903064!4d8.7223295!16s%2Fg%2F11cs5psvhc?hl=de&entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="leading-relaxed hover:opacity-70 transition-opacity w-fit"
-              >
-                <p>MS Architektur AG</p>
-                <p>Roossstrasse 47</p>
-                <p>8832 Wollerau</p>
-              </a>
               <a
                 href="https://www.google.com/maps/place/MS+Architektur+AG/@47.3727476,8.5379457,17.06z/data=!4m10!1m2!2m1!1sMS+Architektur+AG+Bahnhofstrasse+44+8001+Z%C3%BCrich!3m6!1s0x47903dae8bd89cb5:0xfcba7eb2eb5c9b0a!8m2!3d47.3719411!4d8.5387192!15sCjBNUyBBcmNoaXRla3R1ciBBRyBCYWhuaG9mc3RyYXNzZSA0NCA4MDAxIFrDvHJpY2haMiIwbXMgYXJjaGl0ZWt0dXIgYWcgYmFobmhvZnN0cmFzc2UgNDQgODAwMSB6w7xyaWNokgEJYXJjaGl0ZWN0mgFEQ2k5RFFVbFJRVU52WkVOb2RIbGpSamx2VDJ0R2FHUlZOVVpYUXpGdFlteGFkV1ZFVGpKVFZVNURaVzVTZDFsclJSQULgAQD6AQUI9wEQRA!16s%2Fg%2F11ftcj77b4?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="leading-relaxed hover:opacity-70 transition-opacity w-fit"
               >
-                <p>Büro:</p>
                 <p>MS Architektur AG</p>
                 <p>Bahnhofstrasse 44</p>
                 <p>8001 Zürich</p>
