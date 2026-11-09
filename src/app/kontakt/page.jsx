@@ -97,15 +97,15 @@ const Page = () => {
                 <p>8832 Wollerau</p>
               </a>
               <a
-                href="https://www.google.com/maps/search/?api=1&query=MS+Architektur+AG+Neuenhoferstrasse+99+5400+Baden"
+                href="https://www.google.com/maps/place/MS+Architektur+AG/@47.3727476,8.5379457,17.06z/data=!4m10!1m2!2m1!1sMS+Architektur+AG+Bahnhofstrasse+44+8001+Z%C3%BCrich!3m6!1s0x47903dae8bd89cb5:0xfcba7eb2eb5c9b0a!8m2!3d47.3719411!4d8.5387192!15sCjBNUyBBcmNoaXRla3R1ciBBRyBCYWhuaG9mc3RyYXNzZSA0NCA4MDAxIFrDvHJpY2haMiIwbXMgYXJjaGl0ZWt0dXIgYWcgYmFobmhvZnN0cmFzc2UgNDQgODAwMSB6w7xyaWNokgEJYXJjaGl0ZWN0mgFEQ2k5RFFVbFJRVU52WkVOb2RIbGpSamx2VDJ0R2FHUlZOVVpYUXpGdFlteGFkV1ZFVGpKVFZVNURaVzVTZDFsclJSQULgAQD6AQUI9wEQRA!16s%2Fg%2F11ftcj77b4?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="leading-relaxed hover:opacity-70 transition-opacity w-fit"
               >
                 <p>Büro:</p>
                 <p>MS Architektur AG</p>
-                <p>Neuenhoferstrasse 99</p>
-                <p>5400 Baden</p>
+                <p>Bahnhofstrasse 44</p>
+                <p>8001 Zürich</p>
               </a>
             </div>
           </div>
